@@ -1,0 +1,72 @@
+apply plugin: 'com.android.application'
+
+ext {
+    support_version = '25.3.1'
+    constraint_layout_version = '1.0.2'
+    pageindicatorview_version = '0.1.2'
+
+    commons_lang3_version = '3.5'
+
+    retrofit_version = '2.1.0'
+    picasso_version = '2.5.2'
+    picasso_transformations_version = '2.1.2'
+}
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.3"
+
+    defaultConfig {
+        applicationId "com.slicky.ulj.javafakesocial"
+
+        minSdkVersion 19
+        targetSdkVersion 25
+
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        vectorDrawables.useSupportLibrary = true
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+
+    // android tools
+    compile "com.android.support:appcompat-v7:$support_version"
+    compile "com.android.support:recyclerview-v7:$support_version"
+    compile "com.android.support:cardview-v7:$support_version"
+    compile "com.android.support:support-v4:$support_version"
+    compile "com.android.support:design:$support_version"
+    compile "com.android.support.constraint:constraint-layout:$constraint_layout_version"
+
+    // apache commons lang
+    compile "org.apache.commons:commons-lang3:$commons_lang3_version"
+
+    // page indicator view
+    compile "com.romandanylyk:pageindicatorview:$pageindicatorview_version@aar"
+
+    // retrofit
+    compile "com.squareup.retrofit2:retrofit:$retrofit_version"
+    compile "com.squareup.retrofit2:converter-gson:$retrofit_version"
+    compile "com.squareup.retrofit2:converter-scalars:$retrofit_version"
+    // picasso
+    compile "com.squareup.picasso:picasso:$picasso_version"
+    compile "jp.wasabeef:picasso-transformations:$picasso_transformations_version"
+
+    // testing
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile 'com.android.support:support-v4:25.3.1'
+    compile 'com.android.support:support-vector-drawable:25.3.1'
+    testCompile 'junit:junit:4.12'
+}
