@@ -12,7 +12,7 @@
                 android:id="@+id/about_app_logo"
                 android:layout_width="160dp"
                 android:layout_height="160dp"
-                app:srcCompat="@drawable/icon"
+                app:srcCompat="@drawable/logo_transparent"
                 android:scaleType="fitCenter"
 
                 android:layout_marginTop="32dp"
@@ -23,7 +23,7 @@
                 />
 
         <TextView
-                android:text="This app is powered by"
+                android:name="This app is powered by"
                 android:id="@+id/about_powered_by"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -39,7 +39,7 @@
                 />
 
         <TextView
-                android:text="randomuser.me"
+                android:name="randomuser.me"
                 android:id="@+id/about_randomuser"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -56,7 +56,7 @@
                 />
 
         <TextView
-                android:text="&amp;"
+                android:name="&amp;"
                 android:id="@+id/about_and"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -70,7 +70,7 @@
                 />
 
         <TextView
-                android:text="watchout4snakes.com"
+                android:name="watchout4snakes.com"
                 android:id="@+id/about_watchout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

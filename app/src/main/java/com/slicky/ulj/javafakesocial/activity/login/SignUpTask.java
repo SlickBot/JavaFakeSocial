@@ -1,8 +1,6 @@
 package com.slicky.ulj.javafakesocial.activity.login;
 
-import android.content.Intent;
 import com.slicky.ulj.javafakesocial.activity.ProgressDialogTask;
-import com.slicky.ulj.javafakesocial.activity.content.ContentActivity;
 import com.slicky.ulj.javafakesocial.rest.DummyDBHandler;
 
 import java.io.IOException;
@@ -40,17 +38,14 @@ class SignUpTask extends ProgressDialogTask<Boolean> {
 
     @Override
     public void success(Boolean canSignup) {
-        if (canSignup) {
-            Intent intent = new Intent(fragment.getActivity(), ContentActivity.class);
-            fragment.startActivity(intent);
-            fragment.getActivity().finish();
-        } else {
-            fragment.failSignup();
-        }
+        if (canSignup)
+            fragment.successSignup();
+        else
+            fragment.failSignup("Could not create new account!", null);
     }
 
     @Override
     public void fail(Exception e) {
-        fragment.handleError("Could not Sign Up!", e);
+        fragment.failSignup("Could not Sign Up!", e);
     }
 }

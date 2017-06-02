@@ -26,19 +26,19 @@ public class FakeUtils {
 
     public static String getPersonInfo(Person person) {
         String city = person.getLocation().getCity();
-        String country = getCountry(person.getNat());
+        String country = getCountryFromCode(person.getNat());
         return capitalize(city) + ", " + country;
     }
 
-    public static CharSequence getFullDate(Date date) {
+    public static CharSequence getFormattedWithTime(Date date) {
         return DateFormat.format("d. M. yyyy, hh:mm:ss", date);
     }
 
-    public static CharSequence getDate(long d) {
-        return DateFormat.format("d. M. yyyy", d);
+    public static CharSequence getFormatted(Date date) {
+        return DateFormat.format("d. M. yyyy", date);
     }
 
-    public static String getCountry(String nat) {
+    public static String getCountryFromCode(String nat) {
         return new Locale("", nat).getDisplayCountry(new Locale("en"));
     }
 }

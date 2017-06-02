@@ -14,7 +14,6 @@ import java.lang.reflect.Type;
  * Created by SlickyPC on 17.5.2017
  */
 public class StringConverter extends Converter.Factory {
-    private static final MediaType MEDIA_TYPE = MediaType.parse("text/plain");
 
     @Override
     public Converter<ResponseBody, ?> responseBodyConverter(Type type,
@@ -39,7 +38,7 @@ public class StringConverter extends Converter.Factory {
             return new Converter<String, RequestBody>() {
                 @Override
                 public RequestBody convert(String value) throws IOException {
-                    return RequestBody.create(MEDIA_TYPE, value);
+                    return RequestBody.create(MediaType.parse("text/plain"), value);
                 }
             };
         return null;

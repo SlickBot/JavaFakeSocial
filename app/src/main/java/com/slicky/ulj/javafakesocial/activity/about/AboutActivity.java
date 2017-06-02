@@ -17,7 +17,7 @@ public class AboutActivity extends BackableActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_about);
+        setContentView(R.layout.about_activity);
     }
 
     public void onRandomUserClick(View view) {

@@ -2,7 +2,6 @@ package com.slicky.ulj.javafakesocial.activity.login;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -16,13 +15,14 @@ import com.slicky.ulj.javafakesocial.R;
 public class LoginActivity extends AppCompatActivity {
 
     private ViewPager viewPager;
+    private LoginAdapter adapter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.login_activity);
 
-        PagerAdapter adapter = new LoginAdapter(getSupportFragmentManager());
+        adapter = new LoginAdapter(getSupportFragmentManager());
 
         viewPager = (ViewPager) findViewById(R.id.container);
         viewPager.setAdapter(adapter);
@@ -39,11 +39,19 @@ public class LoginActivity extends AppCompatActivity {
             super.onBackPressed();
     }
 
+    public void onSignInClick(View view) {
+        adapter.getSigninFragment().trySignin();
+    }
+
     public void onSignUpClick(View view) {
+        adapter.getSignupFragment().trySignup();
+    }
+
+    public void onMoveToSignUpClick(View view) {
         viewPager.setCurrentItem(1);
     }
 
-    public void onBackClick(View view) {
+    public void onMoveToSignInClick(View view) {
         viewPager.setCurrentItem(0);
     }
 

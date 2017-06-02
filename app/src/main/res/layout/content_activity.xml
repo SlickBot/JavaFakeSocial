@@ -10,7 +10,7 @@
         tools:openDrawer="start">
 
     <include
-            layout="@layout/app_bar_content"
+            layout="@layout/content_app_bar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
 
@@ -20,8 +20,8 @@
             android:layout_height="match_parent"
             android:layout_gravity="start"
             android:fitsSystemWindows="true"
-            app:headerLayout="@layout/nav_header_content"
-            app:menu="@menu/activity_content_drawer"
+            app:headerLayout="@layout/content_header"
+            app:menu="@menu/content_drawer"
             app:itemIconTint="@color/colorAccent"
             />
 

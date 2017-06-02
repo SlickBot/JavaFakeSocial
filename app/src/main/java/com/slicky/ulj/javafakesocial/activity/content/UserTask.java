@@ -25,7 +25,7 @@ class UserTask extends ProgressDialogTask<Person> {
 
     @Override
     public void success(Person user) {
-        activity.openProfile(user, true);
+        activity.openOwnerProfile(user);
     }
 
     @Override

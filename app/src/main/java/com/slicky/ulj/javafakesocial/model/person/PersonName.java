@@ -7,6 +7,7 @@ import android.os.Parcelable;
  * Created by SlickyPC on 17.5.2017
  */
 public class PersonName implements Parcelable {
+
     private final String title;
     private final String first;
     private final String last;

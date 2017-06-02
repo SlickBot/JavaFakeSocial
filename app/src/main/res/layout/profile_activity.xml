@@ -22,7 +22,7 @@
                 />
 
         <TextView
-                android:text="Name"
+                android:name="Name"
                 android:id="@+id/profile_name_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -56,7 +56,7 @@
                 />
 
         <TextView
-                android:text="Email"
+                android:name="Email"
                 android:id="@+id/profile_email_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -103,7 +103,7 @@
                 />
 
         <TextView
-                android:text="Cell"
+                android:name="Cell"
                 android:id="@+id/profile_cell_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -137,7 +137,7 @@
                 />
 
         <TextView
-                android:text="Phone"
+                android:name="Phone"
                 android:id="@+id/profile_phone_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -184,7 +184,7 @@
                 />
 
         <TextView
-                android:text="Birthday"
+                android:name="Birthday"
                 android:id="@+id/profile_birthday_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -218,7 +218,7 @@
                 />
 
         <TextView
-                android:text="Registered"
+                android:name="Registered"
                 android:id="@+id/profile_registered_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -265,7 +265,7 @@
                 />
 
         <TextView
-                android:text="Street"
+                android:name="Street"
                 android:id="@+id/profile_street_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -299,7 +299,7 @@
                 />
 
         <TextView
-                android:text="City"
+                android:name="City"
                 android:id="@+id/profile_city_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -333,7 +333,7 @@
                 />
 
         <TextView
-                android:text="State"
+                android:name="State"
                 android:id="@+id/profile_state_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -367,7 +367,7 @@
                 />
 
         <TextView
-                android:text="Country"
+                android:name="Country"
                 android:id="@+id/profile_nat_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

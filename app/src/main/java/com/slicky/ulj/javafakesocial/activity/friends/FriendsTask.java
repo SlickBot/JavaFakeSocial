@@ -11,6 +11,7 @@ import java.util.List;
  * Created by SlickyPC on 24.5.2017
  */
 class FriendsTask extends ProgressDialogTask<List<Person>> {
+
     private FriendsActivity activity;
 
     FriendsTask(FriendsActivity activity) {
@@ -30,6 +31,6 @@ class FriendsTask extends ProgressDialogTask<List<Person>> {
 
     @Override
     public void fail(Exception e) {
-        activity.handleError("Could not retrieve content!", e);
+        activity.onFail("Could not retrieve Friends!", e);
     }
 }

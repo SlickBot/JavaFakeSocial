@@ -33,6 +33,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:maxLines="1"
 
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
@@ -46,6 +47,7 @@
                 android:id="@+id/friend_info"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:maxLines="1"
 
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"

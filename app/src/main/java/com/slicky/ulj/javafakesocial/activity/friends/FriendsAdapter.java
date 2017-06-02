@@ -40,21 +40,24 @@ class FriendsAdapter extends RecyclerView.Adapter<FriendsViewHolder> {
     @Override
     public FriendsViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         final View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.item_friends, parent, false);
+                .inflate(R.layout.friends_item, parent, false);
+
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 int itemPosition = recycler.getChildLayoutPosition(view);
                 Person friend = friendsList.get(itemPosition);
-                activity.openProfile(friend);
+                activity.openFriendProfile(friend);
             }
         });
+
         return new FriendsViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(FriendsViewHolder holder, int position) {
         Person friend = friendsList.get(position);
+
         holder.getFriendName().setText(FakeUtils.getFullPersonNameWithTitle(friend));
         holder.getFriendInfo().setText(FakeUtils.getPersonInfo(friend));
         Picasso.with(activity)

@@ -1,27 +1,31 @@
 package com.slicky.ulj.javafakesocial.activity.login;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
 import com.slicky.ulj.javafakesocial.R;
+import com.slicky.ulj.javafakesocial.activity.content.ContentActivity;
 
 /**
  * Created by SlickyPC on 18.5.2017
  */
 public class SignUpFragment extends Fragment {
+    private static final String TAG = SignUpFragment.class.getCanonicalName();
 
-    private EditText first;
-    private EditText last;
-    private EditText email;
-    private EditText password;
+    private EditText firstField;
+    private EditText lastField;
+    private EditText emailField;
+    private EditText firstPasswordField;
 
     private SignUpTask task;
+    private SignUpValidator validator;
 
     static SignUpFragment newInstance() {
         return new SignUpFragment();
@@ -36,20 +40,15 @@ public class SignUpFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_signup, container, false);
+        View view = inflater.inflate(R.layout.signup_fragment, container, false);
 
-        first = (EditText) view.findViewById(R.id.first_name);
-        last = (EditText) view.findViewById(R.id.last_name);
-        email = (EditText) view.findViewById(R.id.email);
-        password = (EditText) view.findViewById(R.id.password);
+        validator = new SignUpValidator(view);
 
-        Button button = (Button) view.findViewById(R.id.sign_up);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onSignupClick();
-            }
-        });
+        firstField = (EditText) view.findViewById(R.id.signup_first_name);
+        lastField = (EditText) view.findViewById(R.id.signup_last_name);
+        emailField = (EditText) view.findViewById(R.id.signup_email);
+        firstPasswordField = (EditText) view.findViewById(R.id.signup_first_password);
+
         return view;
     }
 
@@ -60,38 +59,39 @@ public class SignUpFragment extends Fragment {
             task.cancel();
     }
 
-    private void onSignupClick() {
-        // TODO: validate fields
-        task = new SignUpTask(this,
-                first.getText().toString(),
-                last.getText().toString(),
-                email.getText().toString(),
-                password.getText().toString());
-        task.execute();
-    }
-
-    void handleError(final String text, Exception e) {
-        getActivity().runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                new AlertDialog.Builder(getContext(), R.style.AppTheme_Dialog)
-                        .setMessage(text)
-                        .create()
-                        .show();
+    void trySignup() {
+        if (validator.validate()) {
+            if (validator.acceptedLegalNotice()) {
+                task = new SignUpTask(this,
+                        firstField.getText().toString(),
+                        lastField.getText().toString(),
+                        emailField.getText().toString(),
+                        firstPasswordField.getText().toString());
+                task.execute();
+            } else {
+                displayDialog("You have to accept legal notice!");
             }
-        });
-        // TODO: LOG IT!
-        e.printStackTrace();
+        }
     }
 
-    void failSignup() {
+    void successSignup() {
+        Intent intent = new Intent(getActivity(), ContentActivity.class);
+        startActivity(intent);
+        getActivity().finish();
+    }
+
+    void failSignup(String text, Exception e) {
+        displayDialog(text + (e != null ? "\n" + e.getLocalizedMessage() : ""));
+        Log.wtf(TAG, text, e);
+    }
+
+    private void displayDialog(final String text) {
         getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                new AlertDialog.Builder(getContext(), R.style.AppTheme_Dialog)
-                        .setMessage("Could not create new account!")
-                        .create()
-                        .show();
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext(), R.style.AppTheme_Dialog)
+                        .setMessage(text);
+                builder.create().show();
             }
         });
     }

@@ -16,12 +16,12 @@
     <ImageView
             android:layout_width="wrap_content"
             android:layout_height="80dp"
-            app:srcCompat="@drawable/icon"
+            app:srcCompat="@drawable/logo_transparent"
             android:paddingTop="@dimen/nav_header_vertical_spacing"
             />
 
     <TextView
-            android:text="@string/app_name"
+            android:name="@string/app_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
@@ -29,7 +29,7 @@
             />
 
     <TextView
-            android:text="Where everything is fake"
+            android:name="Where everything is fake"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="@style/TextAppearance.AppCompat.Small"

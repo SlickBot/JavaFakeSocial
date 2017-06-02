@@ -10,12 +10,17 @@ import java.util.List;
  * Created by SlickyPC on 20.5.2017
  */
 public interface DBHandler {
-    boolean login(String username, String password) throws IOException;
+
+    boolean signin(String email, String password) throws IOException;
 
     boolean signup(String firstName,
                    String lastName,
                    String email,
                    String password) throws IOException;
+
+    void signout();
+
+    Boolean uploadContent(String content) throws IOException;
 
     Person getUser() throws IOException;
 

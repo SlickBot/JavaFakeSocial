@@ -1,5 +1,6 @@
 package com.slicky.ulj.javafakesocial.activity.profile;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -18,16 +19,19 @@ import static org.apache.commons.lang3.text.WordUtils.capitalize;
  * Created by SlickyPC on 22.5.2017
  */
 public class ProfileActivity extends BackableActivity {
+    private static final String TAG = ProfileActivity.class.getCanonicalName();
+    private static final String KEY_PERSON = TAG + ".person";
+    private static final String KEY_OWNER = TAG + ".owner";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profile);
+        setContentView(R.layout.profile_activity);
 
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
-        Person person = extras.getParcelable("person");
-        boolean isOwner = extras.getBoolean("is_owner");
+        Person person = extras.getParcelable(KEY_PERSON);
+        boolean isOwner = extras.getBoolean(KEY_OWNER);
 
         if (isOwner)
             setTitle("Your Profile");
@@ -51,12 +55,12 @@ public class ProfileActivity extends BackableActivity {
         String email = person.getEmail();
         String cell = person.getCell();
         String phone = person.getPhone();
-        CharSequence birthday = FakeUtils.getFullDate(person.getDob());
-        CharSequence registered = FakeUtils.getFullDate(person.getRegistered());
+        CharSequence birthday = FakeUtils.getFormattedWithTime(person.getDob());
+        CharSequence registered = FakeUtils.getFormattedWithTime(person.getRegistered());
         String street = capitalize(person.getLocation().getStreet());
         String city = capitalize(person.getLocation().getCity());
         String state = capitalize(person.getLocation().getState());
-        String nat = FakeUtils.getCountry(person.getNat());
+        String nat = FakeUtils.getCountryFromCode(person.getNat());
 
         Picasso.with(this).load(imageUrl)
                 .placeholder(R.drawable.ic_user)
@@ -72,5 +76,19 @@ public class ProfileActivity extends BackableActivity {
         cityField.setText(city);
         stateField.setText(state);
         natField.setText(nat);
+    }
+
+    public static Intent getOwnerIntent(Context context, Person owner) {
+        Intent intent = new Intent(context, ProfileActivity.class);
+        intent.putExtra(KEY_PERSON, owner);
+        intent.putExtra(KEY_OWNER, true);
+        return intent;
+    }
+
+    public static Intent getFriendIntent(Context context, Person friend) {
+        Intent intent = new Intent(context, ProfileActivity.class);
+        intent.putExtra(KEY_PERSON, friend);
+        intent.putExtra(KEY_OWNER, false);
+        return intent;
     }
 }

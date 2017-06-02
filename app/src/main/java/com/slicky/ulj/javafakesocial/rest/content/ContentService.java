@@ -7,6 +7,7 @@ import retrofit2.Retrofit;
  */
 public class ContentService {
     public static final String URL = "http://watchout4snakes.com/wo4snakes/";
+
     private static ContentApi instance;
 
     public static synchronized ContentApi getInstance() {

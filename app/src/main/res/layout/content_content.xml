@@ -7,6 +7,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        tools:showIn="@layout/app_bar_content"
+        tools:showIn="@layout/content_app_bar"
         tools:context="com.slicky.ulj.javafakesocial.activity.content.ContentActivity"
-        tools:listitem="@layout/item_content"/>
+        tools:listitem="@layout/content_item"/>

@@ -2,7 +2,9 @@ package com.slicky.ulj.javafakesocial.activity;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
+import android.support.v7.widget.AppCompatDrawableManager;
 import com.slicky.ulj.javafakesocial.R;
 
 import java.io.IOException;
@@ -16,9 +18,11 @@ public abstract class ProgressDialogTask<T> {
     private final AsyncTask<Void, Void, T> task;
 
     public ProgressDialogTask(Context context, String message) {
+        Drawable logo = AppCompatDrawableManager.get().getDrawable(context, R.drawable.loading_drawable);
         progress = new ProgressDialog(context, R.style.AppTheme_Dialog);
         progress.setMessage(message);
         progress.setIndeterminate(true);
+        progress.setIndeterminateDrawable(logo);
         progress.setCancelable(false);
 
         task = new AsyncTask<Void, Void, T>() {

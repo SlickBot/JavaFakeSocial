@@ -9,22 +9,36 @@ import android.support.v4.app.FragmentPagerAdapter;
  */
 class LoginAdapter extends FragmentPagerAdapter {
 
+    private final SignInFragment signinFragment;
+    private final SignUpFragment signupFragment;
+
     LoginAdapter(FragmentManager fm) {
         super(fm);
+
+        signinFragment = SignInFragment.newInstance();
+        signupFragment = SignUpFragment.newInstance();
     }
 
     @Override
     public Fragment getItem(int position) {
         switch (position) {
             case 1:
-                return SignUpFragment.newInstance();
+                return signupFragment;
             default:
-                return SignInFragment.newInstance();
+                return signinFragment;
         }
     }
 
     @Override
     public int getCount() {
         return 2;
+    }
+
+    SignInFragment getSigninFragment() {
+        return signinFragment;
+    }
+
+    SignUpFragment getSignupFragment() {
+        return signupFragment;
     }
 }

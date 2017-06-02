@@ -42,15 +42,17 @@ class ContentAdapter extends RecyclerView.Adapter<ContentViewHolder> {
     @Override
     public ContentViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         final View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.item_content, parent, false);
+                .inflate(R.layout.content_item, parent, false);
+
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 int itemPosition = recycler.getChildLayoutPosition(view);
                 Content content = contentList.get(itemPosition);
-                activity.openProfile(content.getOwner(), false);
+                activity.openFriendProfile(content.getOwner());
             }
         });
+
         return new ContentViewHolder(view);
     }
 
@@ -58,9 +60,10 @@ class ContentAdapter extends RecyclerView.Adapter<ContentViewHolder> {
     public void onBindViewHolder(ContentViewHolder holder, int position) {
         Content content = contentList.get(position);
         Person owner = content.getOwner();
+        Date postedAt = new Date(content.getPostedAt());
 
         holder.getOwnerName().setText(FakeUtils.getFullPersonName(owner));
-        holder.getPostedAt().setText(FakeUtils.getFullDate(new Date(content.getPostedAt())));
+        holder.getPostedAt().setText(FakeUtils.getFormattedWithTime(postedAt));
         holder.getContent().setText(content.getText());
         Picasso.with(activity)
                 .load(owner.getPicture().getMedium())

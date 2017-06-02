@@ -15,7 +15,7 @@ class ContentTask extends ProgressDialogTask<List<Content>> {
     private final ContentActivity activity;
 
     ContentTask(ContentActivity activity) {
-        super(activity, "Loading content...");
+        super(activity, "Loading Content...");
         this.activity = activity;
     }
 
@@ -31,6 +31,6 @@ class ContentTask extends ProgressDialogTask<List<Content>> {
 
     @Override
     public void fail(Exception e) {
-        activity.handleError("Could not retrieve content!", e);
+        activity.handleError("Could not retrieve Content!", e);
     }
 }
