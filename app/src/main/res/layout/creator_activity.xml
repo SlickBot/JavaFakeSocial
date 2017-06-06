@@ -9,9 +9,7 @@
     <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-
-            android:layout_above="@+id/creator_button"
-            >
+            android:layout_above="@+id/creator_button">
 
 
         <android.support.design.widget.TextInputLayout
@@ -34,8 +32,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
 
-                    android:paddingLeft="8dp"
-                    android:paddingRight="8dp"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"
                     android:paddingTop="16dp"
                     android:paddingBottom="16dp"
 

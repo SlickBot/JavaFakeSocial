@@ -58,7 +58,7 @@ class FriendsAdapter extends RecyclerView.Adapter<FriendsViewHolder> {
     public void onBindViewHolder(FriendsViewHolder holder, int position) {
         Person friend = friendsList.get(position);
 
-        holder.getFriendName().setText(FakeUtils.getFullPersonNameWithTitle(friend));
+        holder.getFriendName().setText(FakeUtils.getFullPersonName(friend));
         holder.getFriendInfo().setText(FakeUtils.getPersonInfo(friend));
         Picasso.with(activity)
                 .load(friend.getPicture().getMedium())

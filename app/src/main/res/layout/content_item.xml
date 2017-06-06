@@ -26,7 +26,7 @@
 
                 card_view:layout_constraintTop_toTopOf="parent"
                 card_view:layout_constraintBottom_toBottomOf="parent"
-                card_view:layout_constraintLeft_toLeftOf="parent"
+                card_view:layout_constraintStart_toStartOf="parent"
                 />
 
         <TextView
@@ -39,7 +39,7 @@
                 android:layout_marginEnd="16dp"
 
                 card_view:layout_constraintTop_toTopOf="parent"
-                card_view:layout_constraintLeft_toRightOf="@+id/owner_image"
+                card_view:layout_constraintStart_toEndOf="@+id/owner_image"
                 />
 
         <TextView
@@ -52,8 +52,8 @@
                 android:layout_marginEnd="16dp"
 
                 card_view:layout_constraintTop_toBottomOf="@+id/owner_name"
-                card_view:layout_constraintLeft_toRightOf="@+id/owner_image"
-                card_view:layout_constraintRight_toRightOf="parent"
+                card_view:layout_constraintStart_toEndOf="@+id/owner_image"
+                card_view:layout_constraintEnd_toEndOf="parent"
                 />
 
         <TextView
@@ -66,7 +66,7 @@
                 android:layout_marginEnd="16dp"
 
                 card_view:layout_constraintTop_toBottomOf="@+id/content"
-                card_view:layout_constraintRight_toRightOf="parent"
+                card_view:layout_constraintEnd_toEndOf="parent"
                 />
 
     </android.support.constraint.ConstraintLayout>

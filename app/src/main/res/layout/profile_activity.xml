@@ -20,8 +20,8 @@
                 android:layout_margin="32dp"
 
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 />
 
         <TextView
@@ -34,12 +34,10 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginLeft="32dp"
                 android:layout_marginRight="32dp"
-                android:layout_marginStart="32dp"
-                android:layout_marginEnd="32dp"
 
                 app:layout_constraintTop_toBottomOf="@+id/profile_icon"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 />
 
         <TextView
@@ -50,12 +48,10 @@
 
                 android:layout_marginLeft="32dp"
                 android:layout_marginRight="32dp"
-                android:layout_marginStart="32dp"
-                android:layout_marginEnd="32dp"
 
                 app:layout_constraintTop_toBottomOf="@+id/profile_name_title"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 />
 
         <TextView
@@ -68,12 +64,10 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginLeft="32dp"
                 android:layout_marginRight="32dp"
-                android:layout_marginStart="32dp"
-                android:layout_marginEnd="32dp"
 
                 app:layout_constraintTop_toBottomOf="@+id/profile_name"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 />
 
         <TextView
@@ -84,12 +78,10 @@
 
                 android:layout_marginLeft="32dp"
                 android:layout_marginRight="32dp"
-                android:layout_marginStart="32dp"
-                android:layout_marginEnd="32dp"
 
                 app:layout_constraintTop_toBottomOf="@+id/profile_email_title"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 />
 
         <View
@@ -101,8 +93,8 @@
                 android:layout_marginTop="16dp"
 
                 app:layout_constraintTop_toBottomOf="@+id/profile_email"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 />
 
         <TextView
@@ -115,12 +107,10 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginLeft="32dp"
                 android:layout_marginRight="32dp"
-                android:layout_marginStart="32dp"
-                android:layout_marginEnd="32dp"
 
                 app:layout_constraintTop_toBottomOf="@+id/divider_0"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 />
 
         <TextView
@@ -131,12 +121,10 @@
 
                 android:layout_marginLeft="32dp"
                 android:layout_marginRight="32dp"
-                android:layout_marginStart="32dp"
-                android:layout_marginEnd="32dp"
 
                 app:layout_constraintTop_toBottomOf="@+id/profile_cell_title"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 />
 
         <TextView
@@ -149,12 +137,10 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginLeft="32dp"
                 android:layout_marginRight="32dp"
-                android:layout_marginStart="32dp"
-                android:layout_marginEnd="32dp"
 
                 app:layout_constraintTop_toBottomOf="@+id/profile_cell"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 />
 
         <TextView
@@ -165,12 +151,10 @@
 
                 android:layout_marginLeft="32dp"
                 android:layout_marginRight="32dp"
-                android:layout_marginStart="32dp"
-                android:layout_marginEnd="32dp"
 
                 app:layout_constraintTop_toBottomOf="@+id/profile_phone_title"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 />
 
         <View
@@ -182,8 +166,8 @@
                 android:layout_marginTop="16dp"
 
                 app:layout_constraintTop_toBottomOf="@+id/profile_phone"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 />
 
         <TextView
@@ -196,12 +180,10 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginLeft="32dp"
                 android:layout_marginRight="32dp"
-                android:layout_marginStart="32dp"
-                android:layout_marginEnd="32dp"
 
                 app:layout_constraintTop_toBottomOf="@+id/divider_1"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 />
 
         <TextView
@@ -212,12 +194,10 @@
 
                 android:layout_marginLeft="32dp"
                 android:layout_marginRight="32dp"
-                android:layout_marginStart="32dp"
-                android:layout_marginEnd="32dp"
 
                 app:layout_constraintTop_toBottomOf="@+id/profile_birthday_title"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 />
 
         <TextView
@@ -230,12 +210,10 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginLeft="32dp"
                 android:layout_marginRight="32dp"
-                android:layout_marginStart="32dp"
-                android:layout_marginEnd="32dp"
 
                 app:layout_constraintTop_toBottomOf="@+id/profile_birthday"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 />
 
         <TextView
@@ -246,12 +224,10 @@
 
                 android:layout_marginLeft="32dp"
                 android:layout_marginRight="32dp"
-                android:layout_marginStart="32dp"
-                android:layout_marginEnd="32dp"
 
                 app:layout_constraintTop_toBottomOf="@+id/profile_registered_title"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 />
 
         <View
@@ -263,8 +239,8 @@
                 android:layout_marginTop="16dp"
 
                 app:layout_constraintTop_toBottomOf="@+id/profile_registered"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 />
 
         <TextView
@@ -277,12 +253,10 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginLeft="32dp"
                 android:layout_marginRight="32dp"
-                android:layout_marginStart="32dp"
-                android:layout_marginEnd="32dp"
 
                 app:layout_constraintTop_toBottomOf="@+id/divider_2"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 />
 
         <TextView
@@ -293,12 +267,10 @@
 
                 android:layout_marginLeft="32dp"
                 android:layout_marginRight="32dp"
-                android:layout_marginStart="32dp"
-                android:layout_marginEnd="32dp"
 
                 app:layout_constraintTop_toBottomOf="@+id/profile_street_title"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 />
 
         <TextView
@@ -311,12 +283,10 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginLeft="32dp"
                 android:layout_marginRight="32dp"
-                android:layout_marginStart="32dp"
-                android:layout_marginEnd="32dp"
 
                 app:layout_constraintTop_toBottomOf="@+id/profile_street"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 />
 
         <TextView
@@ -327,12 +297,10 @@
 
                 android:layout_marginLeft="32dp"
                 android:layout_marginRight="32dp"
-                android:layout_marginStart="32dp"
-                android:layout_marginEnd="32dp"
 
                 app:layout_constraintTop_toBottomOf="@+id/profile_city_title"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 />
 
         <TextView
@@ -345,12 +313,10 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginLeft="32dp"
                 android:layout_marginRight="32dp"
-                android:layout_marginStart="32dp"
-                android:layout_marginEnd="32dp"
 
                 app:layout_constraintTop_toBottomOf="@+id/profile_city"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 />
 
         <TextView
@@ -361,12 +327,10 @@
 
                 android:layout_marginLeft="32dp"
                 android:layout_marginRight="32dp"
-                android:layout_marginStart="32dp"
-                android:layout_marginEnd="32dp"
 
                 app:layout_constraintTop_toBottomOf="@+id/profile_state_title"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 />
 
         <TextView
@@ -379,12 +343,10 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginLeft="32dp"
                 android:layout_marginRight="32dp"
-                android:layout_marginStart="32dp"
-                android:layout_marginEnd="32dp"
 
                 app:layout_constraintTop_toBottomOf="@+id/profile_state"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 />
 
         <TextView
@@ -396,13 +358,11 @@
                 android:layout_marginBottom="16dp"
                 android:layout_marginLeft="32dp"
                 android:layout_marginRight="32dp"
-                android:layout_marginStart="32dp"
-                android:layout_marginEnd="32dp"
 
                 app:layout_constraintTop_toBottomOf="@+id/profile_nat_title"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 />
 
     </android.support.constraint.ConstraintLayout>
