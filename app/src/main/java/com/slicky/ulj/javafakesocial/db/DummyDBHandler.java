@@ -1,10 +1,9 @@
-package com.slicky.ulj.javafakesocial.rest;
+package com.slicky.ulj.javafakesocial.db;
 
 import com.slicky.ulj.javafakesocial.model.content.Content;
 import com.slicky.ulj.javafakesocial.model.person.Person;
 import com.slicky.ulj.javafakesocial.model.person.PersonQuery;
-import com.slicky.ulj.javafakesocial.rest.content.ContentService;
-import com.slicky.ulj.javafakesocial.rest.person.PersonService;
+import com.slicky.ulj.javafakesocial.rest.ApiServices;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -32,91 +31,19 @@ public class DummyDBHandler implements DBHandler {
         return instance;
     }
 
-    private void queryData() throws IOException {
-        synchronized (lock) {
-            // Find person candidates.
-            List<Person> candidates = findCandidates();
-            // Use first person as user.
-            user = candidates.get(0);
-            // Use rest as friends.
-            friends = candidates.subList(1, candidates.size());
-            // Generate content.
-            contents = generateContent();
-        }
-    }
-
-    private List<Person> findCandidates() throws IOException {
-        // Query PersonQuery for new random persons.
-        PersonQuery query = PersonService.getInstance()
-                .getPerson(50, null, null, null, null)
-                .execute().body();
-
-        if (query == null)
-            throw new IOException("Did not receive PersonQuery (is null)");
-
-        // Distinct received persons by image URL.
-        List<Person> candidates = distinctByURL(query.getResults());
-
-        if (candidates.size() < 1)
-            throw new IOException("Did not receive enough candidates (size < 1)");
-
-        return candidates;
-    }
-
-    private List<Content> generateContent() throws IOException {
-        ArrayList<Content> list = new ArrayList<>();
-        Random random = new Random();
-
-        for (int i = 0; i < 10; i++) {
-            // Query ContentService for new Content text.
-            String query = ContentService.getInstance()
-                    .getContent("", "")
-                    .execute().body();
-
-            if (query == null)
-                throw new IOException("Did not receive Content (is null)");
-
-            // Pick random Content owner.
-            Person randy = friends.get(new Random().nextInt(friends.size()));
-
-            // Find last post time or set it to now.
-            long lastPostTime = list.size() > 0
-                    ? list.get(list.size() - 1).getPostedAt()
-                    : System.currentTimeMillis();
-            // Assign random delay between posts.
-            int timePassed = random.nextInt(1000 * 60 * 60 * 24);
-            // Create new Content and add it to list.
-            Content content = new Content(randy, query, lastPostTime - timePassed);
-            list.add(content);
-        }
-        return list;
-    }
-
-    private List<Person> distinctByURL(List<Person> people) {
-        ArrayList<Person> filtered = new ArrayList<>();
-        HashSet<String> urls = new HashSet<>();
-
-        for (Person friend : people) {
-            String url = friend.getPicture().getLarge();
-            if (urls.add(url))
-                filtered.add(friend);
-        }
-        return filtered;
-    }
-
     @Override
     public boolean signin(String email, String password) throws IOException {
         // Simulate network work.
         simulateWork();
-        // This should do for now.
-        signedIn = email.equals("qwe@asd.yxc") && password.equals("qweasd");
+        // TODO: This should be changed.
+        signedIn = email.equals("change@me.pls") && password.equals("password");
         return signedIn;
     }
 
     @Override
     public void signout() {
         // Not simulating work because this should run on async thread.
-//        simulateWork();
+        /* simulateWork(); */
         // Remove all data assigned to user.
         signedIn = false;
         user = null;
@@ -135,8 +62,8 @@ public class DummyDBHandler implements DBHandler {
                           String password) throws IOException {
         // Simulate network work.
         simulateWork();
-        // Anyone whose first name starts with Q is welcomed.
-        signedIn = firstName.toLowerCase().startsWith("q");
+        // TODO: This should be changed.
+        signedIn = true;
         return signedIn;
     }
 
@@ -175,6 +102,81 @@ public class DummyDBHandler implements DBHandler {
             queryData();
         return contents;
     }
+
+    private void queryData() throws IOException {
+        synchronized (lock) {
+            // Find person candidates.
+            List<Person> candidates = findCandidates();
+            // Use first person as user.
+            user = candidates.get(0);
+            // Use rest as friends.
+            friends = candidates.subList(1, candidates.size());
+            // Generate content.
+            contents = generateContent();
+        }
+    }
+
+    private List<Person> findCandidates() throws IOException {
+        // Query PersonQuery for new random persons.
+        PersonQuery query = ApiServices.personApi()
+                .getPerson(50, null, null, null, null)
+                .execute().body();
+
+        if (query == null)
+            throw new IOException("Did not receive PersonQuery (is null)");
+
+        // Distinct received persons by image URL.
+        List<Person> candidates = distinctByURL(query.getResults());
+
+        if (candidates.size() < 1)
+            throw new IOException("Did not receive enough candidates (size < 1)");
+
+        return candidates;
+    }
+
+    private List<Content> generateContent() throws IOException {
+        ArrayList<Content> list = new ArrayList<>();
+        Random random = new Random();
+
+        for (int i = 0; i < 10; i++) {
+            // Query ContentService for new Content text.
+            String query = ApiServices.contentApi()
+                    .getContent("", "")
+                    .execute().body();
+
+            if (query == null)
+                throw new IOException("Did not receive Content (is null)");
+
+            // Pick random Content owner.
+            Person randy = friends.get(new Random().nextInt(friends.size()));
+
+            // Find last post time or set it to currentTimeMillis.
+            long lastPostTime = list.size() > 0
+                    ? list.get(list.size() - 1).getPostedAt()
+                    : System.currentTimeMillis();
+
+            // Assign random delay between posts.
+            int timePassed = random.nextInt(1000 * 60 * 60 * 24);
+
+            // Create new Content and add it to list.
+            Content content = new Content(randy, query, lastPostTime - timePassed);
+            list.add(content);
+        }
+        return list;
+    }
+
+    private List<Person> distinctByURL(List<Person> people) {
+        ArrayList<Person> filtered = new ArrayList<>();
+        HashSet<String> urls = new HashSet<>();
+
+        for (Person friend : people) {
+            String url = friend.getPicture().getLarge();
+            if (urls.add(url))
+                filtered.add(friend);
+        }
+        return filtered;
+    }
+
 
     private void simulateWork() {
         try {

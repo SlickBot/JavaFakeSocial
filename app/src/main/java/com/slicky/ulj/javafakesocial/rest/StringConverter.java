@@ -1,4 +1,4 @@
-package com.slicky.ulj.javafakesocial.rest.content;
+package com.slicky.ulj.javafakesocial.rest;
 
 import okhttp3.MediaType;
 import okhttp3.RequestBody;

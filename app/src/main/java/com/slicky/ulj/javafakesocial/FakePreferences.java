@@ -6,15 +6,15 @@ import android.content.SharedPreferences;
 /**
  * Created by SlickyPC on 30.5.2017
  */
-public class Preferences {
-    private static final String TAG = Preferences.class.getCanonicalName();
+public class FakePreferences {
+    private static final String TAG = FakePreferences.class.getCanonicalName();
     private static final String NOTIFY_ON_OFF = "notifyOnOff";
     private static final String NOTIFY_RANDOM = "notifyRandom";
     private static final String NOTIFY_DURATION = "notifyDuration";
 
     private final SharedPreferences prefs;
 
-    public Preferences(Context context) {
+    public FakePreferences(Context context) {
         prefs = context.getSharedPreferences(TAG, Context.MODE_PRIVATE);
     }
 

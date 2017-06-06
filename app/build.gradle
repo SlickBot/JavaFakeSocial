@@ -8,6 +8,7 @@ ext {
     commons_lang3_version = '3.5'
 
     retrofit_version = '2.1.0'
+    okhttp_version = '2.7.5'
     picasso_version = '2.5.2'
     picasso_transformations_version = '2.1.2'
 }
@@ -63,7 +64,7 @@ dependencies {
     // retrofit
     compile "com.squareup.retrofit2:retrofit:$retrofit_version"
     compile "com.squareup.retrofit2:converter-gson:$retrofit_version"
-    compile "com.squareup.retrofit2:converter-scalars:$retrofit_version"
+    compile "com.squareup.okhttp:okhttp:$okhttp_version"
 
     // picasso
     compile "com.squareup.picasso:picasso:$picasso_version"

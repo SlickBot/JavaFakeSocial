@@ -77,7 +77,8 @@ class SignUpValidator {
 
         if (email.length() < 5) {
             emailLayout.setError("Email is too short! (min 5)");
-            errorField = emailLayout;
+            if (errorField == null)
+                errorField = emailLayout;
         } else if (email.length() > 50) {
             emailLayout.setError("Email is too long! (max 50)");
             if (errorField == null)
@@ -89,8 +90,8 @@ class SignUpValidator {
                 errorField = emailLayout;
         }
 
-        if (firstPassword.length() < 5) {
-            firstPasswordLayout.setError("Password is too short! (min 5)");
+        if (firstPassword.length() < 8) {
+            firstPasswordLayout.setError("Password is too short! (min 8)");
             if (errorField == null)
                 errorField = firstPasswordLayout;
         } else if (firstPassword.length() > 50) {

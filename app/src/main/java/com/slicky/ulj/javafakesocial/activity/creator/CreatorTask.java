@@ -1,7 +1,7 @@
 package com.slicky.ulj.javafakesocial.activity.creator;
 
 import com.slicky.ulj.javafakesocial.activity.ProgressDialogTask;
-import com.slicky.ulj.javafakesocial.rest.DummyDBHandler;
+import com.slicky.ulj.javafakesocial.db.DummyDBHandler;
 
 import java.io.IOException;
 

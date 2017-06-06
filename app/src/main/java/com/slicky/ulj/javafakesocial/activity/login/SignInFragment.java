@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
+import com.slicky.ulj.javafakesocial.FakeUtils;
 import com.slicky.ulj.javafakesocial.R;
 import com.slicky.ulj.javafakesocial.activity.content.ContentActivity;
 
@@ -60,9 +61,9 @@ public class SignInFragment extends Fragment {
             }
         });
 
-        // todo: remove this
-        emailField.setText("qwe@asd.yxc");
-        passwordField.setText("qweasd");
+        // TODO: This should be changed.
+        emailField.setText("change@me.pls");
+        passwordField.setText("password");
 
         return view;
     }
@@ -80,6 +81,8 @@ public class SignInFragment extends Fragment {
                     emailField.getText().toString(),
                     passwordField.getText().toString());
             task.execute();
+        } else {
+            shakeStage();
         }
     }
 
@@ -92,6 +95,11 @@ public class SignInFragment extends Fragment {
     void failSignin(String text, Exception e) {
         displayDialog(text + (e != null ? "\n" + e.getLocalizedMessage() : ""));
         Log.wtf(TAG, text, e);
+        shakeStage();
+    }
+
+    private void shakeStage() {
+        FakeUtils.shake(getContext(), emailField, passwordField);
     }
 
     private void displayDialog(final String text) {

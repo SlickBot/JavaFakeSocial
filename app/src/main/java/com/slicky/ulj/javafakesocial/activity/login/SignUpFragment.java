@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import com.slicky.ulj.javafakesocial.FakeUtils;
 import com.slicky.ulj.javafakesocial.R;
 import com.slicky.ulj.javafakesocial.activity.content.ContentActivity;
 
@@ -23,6 +24,7 @@ public class SignUpFragment extends Fragment {
     private EditText lastField;
     private EditText emailField;
     private EditText firstPasswordField;
+    private EditText secondPasswordField;
 
     private SignUpTask task;
     private SignUpValidator validator;
@@ -48,6 +50,7 @@ public class SignUpFragment extends Fragment {
         lastField = (EditText) view.findViewById(R.id.signup_last_name);
         emailField = (EditText) view.findViewById(R.id.signup_email);
         firstPasswordField = (EditText) view.findViewById(R.id.signup_first_password);
+        secondPasswordField = (EditText) view.findViewById(R.id.signup_second_password);
 
         return view;
     }
@@ -71,6 +74,8 @@ public class SignUpFragment extends Fragment {
             } else {
                 displayDialog("You have to accept legal notice!");
             }
+        } else {
+            shakeStage();
         }
     }
 
@@ -83,6 +88,11 @@ public class SignUpFragment extends Fragment {
     void failSignup(String text, Exception e) {
         displayDialog(text + (e != null ? "\n" + e.getLocalizedMessage() : ""));
         Log.wtf(TAG, text, e);
+        shakeStage();
+    }
+
+    private void shakeStage() {
+        FakeUtils.shake(getContext(), firstField, lastField, emailField, firstPasswordField, secondPasswordField);
     }
 
     private void displayDialog(final String text) {

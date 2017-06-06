@@ -1,4 +1,4 @@
-package com.slicky.ulj.javafakesocial.rest;
+package com.slicky.ulj.javafakesocial.db;
 
 import com.slicky.ulj.javafakesocial.model.content.Content;
 import com.slicky.ulj.javafakesocial.model.person.Person;

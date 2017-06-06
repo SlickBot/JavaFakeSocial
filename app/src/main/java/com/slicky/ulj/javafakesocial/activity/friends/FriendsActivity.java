@@ -12,7 +12,7 @@ import com.slicky.ulj.javafakesocial.activity.BackableActivity;
 import com.slicky.ulj.javafakesocial.activity.login.LoginActivity;
 import com.slicky.ulj.javafakesocial.activity.profile.ProfileActivity;
 import com.slicky.ulj.javafakesocial.model.person.Person;
-import com.slicky.ulj.javafakesocial.rest.DummyDBHandler;
+import com.slicky.ulj.javafakesocial.db.DummyDBHandler;
 
 import java.util.List;
 

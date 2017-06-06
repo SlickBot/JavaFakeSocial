@@ -6,8 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import com.slicky.ulj.javafakesocial.R;
 import com.slicky.ulj.javafakesocial.activity.BackableActivity;
-import com.slicky.ulj.javafakesocial.rest.content.ContentService;
-import com.slicky.ulj.javafakesocial.rest.person.PersonService;
+import com.slicky.ulj.javafakesocial.rest.ApiServices;
 
 /**
  * Created by SlickyPC on 22.5.2017
@@ -21,12 +20,12 @@ public class AboutActivity extends BackableActivity {
     }
 
     public void onRandomUserClick(View view) {
-        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(PersonService.URL));
+        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(ApiServices.PERSON_URL));
         startActivity(browserIntent);
     }
 
     public void onWatchOutClick(View view) {
-        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(ContentService.URL));
+        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(ApiServices.CONTENT_URL));
         startActivity(browserIntent);
     }
 }

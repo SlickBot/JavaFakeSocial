@@ -88,7 +88,7 @@
         </android.support.design.widget.TextInputLayout>
 
         <Button
-                android:name="Sign In"
+                android:text="Sign In"
                 android:id="@+id/signin_signin_button"
                 android:layout_width="0dp"
                 android:layout_height="48dp"
@@ -105,7 +105,7 @@
                 />
 
         <Button
-                android:name="Sign Up"
+                android:text="Sign Up"
                 android:id="@+id/signin_signup_button"
                 android:layout_width="0dp"
                 android:layout_height="48dp"
@@ -122,7 +122,7 @@
                 />
 
         <TextView
-                android:name="Forgot your login details?"
+                android:text="Forgot your login details?"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/colorTextDark"

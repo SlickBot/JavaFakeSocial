@@ -1,4 +1,4 @@
-package com.slicky.ulj.javafakesocial.rest.content;
+package com.slicky.ulj.javafakesocial.rest;
 
 import retrofit2.Call;
 import retrofit2.http.Field;

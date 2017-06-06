@@ -22,7 +22,7 @@
                 android:layout_marginStart="24dp"/>
 
         <TextView
-                android:name="Sign Up"
+                android:text="Sign Up"
                 android:id="@+id/signup_text"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -206,7 +206,7 @@
         </android.support.design.widget.TextInputLayout>
 
         <CheckBox
-                android:name="This is legal notice for the most awesome social network ever imagined. Please, proceed with caution."
+                android:text="This is legal notice for the most awesome social network ever imagined. Please, proceed with caution."
                 android:id="@+id/legal_checkbox"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -221,7 +221,7 @@
                 />
 
         <Button
-                android:name="Sign Up"
+                android:text="Sign Up"
                 android:id="@+id/signup_signup_button"
                 android:layout_width="0dp"
                 android:layout_height="48dp"
@@ -238,7 +238,7 @@
                 />
 
         <Button
-                android:name="Sign In"
+                android:text="Sign In"
                 android:id="@+id/signup_signin_button"
                 android:layout_width="0dp"
                 android:layout_height="48dp"

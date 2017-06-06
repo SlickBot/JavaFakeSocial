@@ -8,7 +8,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Vibrator;
 import android.support.v7.app.NotificationCompat;
-import com.slicky.ulj.javafakesocial.Preferences;
+import com.slicky.ulj.javafakesocial.FakePreferences;
 import com.slicky.ulj.javafakesocial.R;
 import com.slicky.ulj.javafakesocial.activity.content.ContentActivity;
 
@@ -21,7 +21,7 @@ import java.util.concurrent.TimeUnit;
 public class NotifyingService extends IntentService {
     private static final int NOTIFY_ID = 0xDEAD_BEEF;
 
-    private Preferences prefs;
+    private FakePreferences prefs;
 
     public NotifyingService() {
         super("NotifyingService");
@@ -30,7 +30,7 @@ public class NotifyingService extends IntentService {
     @Override
     public void onCreate() {
         super.onCreate();
-        prefs = new Preferences(this);
+        prefs = new FakePreferences(this);
     }
 
     @Override
@@ -49,7 +49,7 @@ public class NotifyingService extends IntentService {
     }
 
     private void displayNotification() {
-        new Preferences(this).setNotifyOn(false);
+        new FakePreferences(this).setNotifyOn(false);
 
         Intent callbackIntent = new Intent(getApplicationContext(), ContentActivity.class);
         PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(), 0, callbackIntent, 0);

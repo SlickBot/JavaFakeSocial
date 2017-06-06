@@ -10,7 +10,7 @@
             android:padding="16dp">
 
         <TextView
-                android:name="Notifications state"
+                android:text="Notifications state"
                 android:id="@+id/settings_on_off_text"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -26,7 +26,7 @@
                 />
 
         <TextView
-                android:name="When turned on, it will start delayed notify service"
+                android:text="When turned on, it will start delayed notify service"
                 android:id="@+id/settings_on_off_subtext"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -55,7 +55,7 @@
                 />
 
         <TextView
-                android:name="Delay duration"
+                android:text="Delay duration"
                 android:id="@+id/settings_duration_text"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -71,7 +71,7 @@
                 />
 
         <TextView
-                android:name="Duration of delay in seconds"
+                android:text="Duration of delay in seconds"
                 android:id="@+id/settings_duration_subtext"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -101,7 +101,7 @@
                 />
 
         <TextView
-                android:name="Random delay"
+                android:text="Random delay"
                 android:id="@+id/settings_random_text"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -117,7 +117,7 @@
                 />
 
         <TextView
-                android:name="Random delay will be assigned"
+                android:text="Random delay will be assigned"
                 android:id="@+id/settings_random_subtext"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"

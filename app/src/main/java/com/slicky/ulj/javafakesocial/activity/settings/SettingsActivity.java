@@ -10,7 +10,7 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.TextView;
-import com.slicky.ulj.javafakesocial.Preferences;
+import com.slicky.ulj.javafakesocial.FakePreferences;
 import com.slicky.ulj.javafakesocial.R;
 import com.slicky.ulj.javafakesocial.activity.BackableActivity;
 import com.slicky.ulj.javafakesocial.activity.service.NotifyingService;
@@ -22,7 +22,7 @@ import java.util.Locale;
  */
 public class SettingsActivity extends BackableActivity {
 
-    private Preferences prefs;
+    private FakePreferences prefs;
 
     private Switch onOffSwitch;
     private EditText durationField;
@@ -34,7 +34,7 @@ public class SettingsActivity extends BackableActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.settings_activity);
 
-        prefs = new Preferences(this);
+        prefs = new FakePreferences(this);
 
         onOffSwitch = (Switch) findViewById(R.id.settings_on_off_switch);
         durationField = (EditText) findViewById(R.id.settings_duration_field);

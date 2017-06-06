@@ -21,7 +21,7 @@
             />
 
     <TextView
-            android:name="@string/app_name"
+            android:text="@string/app_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
@@ -29,7 +29,7 @@
             />
 
     <TextView
-            android:name="Where everything is fake"
+            android:text="Where everything is fake"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="@style/TextAppearance.AppCompat.Small"

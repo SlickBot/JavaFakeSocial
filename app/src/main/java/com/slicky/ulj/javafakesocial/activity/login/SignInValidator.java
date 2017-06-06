@@ -47,8 +47,8 @@ class SignInValidator {
                 errorField = emailLayout;
         }
 
-        if (password.length() < 5) {
-            passwordLayout.setError("Password is too short! (min 5)");
+        if (password.length() < 8) {
+            passwordLayout.setError("Password is too short! (min 8)");
             if (errorField == null)
                 errorField = passwordLayout;
         } else if (password.length() > 50) {

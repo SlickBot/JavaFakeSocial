@@ -1,4 +1,4 @@
-package com.slicky.ulj.javafakesocial.rest.person;
+package com.slicky.ulj.javafakesocial.rest;
 
 import android.support.annotation.Nullable;
 import com.slicky.ulj.javafakesocial.model.person.PersonQuery;
