@@ -6,6 +6,7 @@ import android.os.Parcelable;
 /**
  * Created by SlickyPC on 17.5.2017
  */
+@SuppressWarnings("unused")
 public class PersonID implements Parcelable {
 
     private final String name;

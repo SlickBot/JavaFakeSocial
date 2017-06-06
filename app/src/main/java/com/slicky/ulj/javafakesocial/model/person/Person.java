@@ -8,6 +8,7 @@ import java.util.Date;
 /**
  * Created by SlickyPC on 17.5.2017
  */
+@SuppressWarnings("unused")
 public class Person implements Parcelable {
 
     private final String gender;
@@ -66,7 +67,7 @@ public class Person implements Parcelable {
         this.nat = in.readString();
     }
 
-    public static final Parcelable.Creator<Person> CREATOR = new Parcelable.Creator<Person>() {
+    static final Parcelable.Creator<Person> CREATOR = new Parcelable.Creator<Person>() {
         @Override
         public Person createFromParcel(Parcel source) {
             return new Person(source);

@@ -8,6 +8,7 @@ import java.util.List;
 /**
  * Created by SlickyPC on 17.5.2017
  */
+@SuppressWarnings("unused")
 public class PersonQuery implements Parcelable {
 
     private final List<Person> results;

@@ -16,6 +16,7 @@ import static org.apache.commons.lang3.text.WordUtils.capitalize;
 /**
  * Created by SlickyPC on 24.5.2017
  */
+@SuppressWarnings("unused")
 public class FakeUtils {
 
     private static final int SHAKE_DURATION = 300;
