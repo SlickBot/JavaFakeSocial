@@ -49,6 +49,9 @@ public class ContentActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.content_activity);
 
+        // Thanks Lollipop -> https://stackoverflow.com/a/29455956/6814029
+        setTitle("Content");
+
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
