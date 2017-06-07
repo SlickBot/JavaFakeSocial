@@ -1,7 +1,7 @@
 package com.slicky.ulj.javafakesocial.activity.creator;
 
 import com.slicky.ulj.javafakesocial.activity.ProgressDialogTask;
-import com.slicky.ulj.javafakesocial.db.DummyDBHandler;
+import com.slicky.ulj.javafakesocial.db.FakeDBHandler;
 
 import java.io.IOException;
 
@@ -21,7 +21,7 @@ class CreatorTask extends ProgressDialogTask<Boolean> {
 
     @Override
     public Boolean backgroundTask() throws IOException {
-        return DummyDBHandler.getInstance().uploadContent(content);
+        return FakeDBHandler.getInstance().uploadContent(content);
     }
 
     @Override

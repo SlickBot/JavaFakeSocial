@@ -39,14 +39,6 @@ public class LoginActivity extends AppCompatActivity {
             super.onBackPressed();
     }
 
-    public void onSignInClick(View view) {
-        adapter.getSigninFragment().trySignin();
-    }
-
-    public void onSignUpClick(View view) {
-        adapter.getSignupFragment().trySignup();
-    }
-
     public void onMoveToSignUpClick(View view) {
         viewPager.setCurrentItem(1);
     }

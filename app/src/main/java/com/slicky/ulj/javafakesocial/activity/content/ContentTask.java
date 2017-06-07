@@ -2,7 +2,7 @@ package com.slicky.ulj.javafakesocial.activity.content;
 
 import com.slicky.ulj.javafakesocial.activity.ProgressDialogTask;
 import com.slicky.ulj.javafakesocial.model.content.Content;
-import com.slicky.ulj.javafakesocial.db.DummyDBHandler;
+import com.slicky.ulj.javafakesocial.db.FakeDBHandler;
 
 import java.io.IOException;
 import java.util.List;
@@ -21,7 +21,7 @@ class ContentTask extends ProgressDialogTask<List<Content>> {
 
     @Override
     public List<Content> backgroundTask() throws IOException {
-        return DummyDBHandler.getInstance().getContent();
+        return FakeDBHandler.getInstance().getContent();
     }
 
     @Override

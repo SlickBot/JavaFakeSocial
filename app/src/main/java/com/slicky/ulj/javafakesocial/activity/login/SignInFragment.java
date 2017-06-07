@@ -11,6 +11,7 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import com.slicky.ulj.javafakesocial.FakeUtils;
@@ -28,7 +29,6 @@ public class SignInFragment extends Fragment {
     private EditText emailField;
     private EditText passwordField;
 
-    private SignInValidator validator;
     private SignInTask task;
 
     static SignInFragment newInstance() {
@@ -47,8 +47,6 @@ public class SignInFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.signin_fragment, container, false);
 
-        validator = new SignInValidator(view);
-
         emailField = (EditText) view.findViewById(R.id.signin_email);
         passwordField = (EditText) view.findViewById(R.id.signin_password);
 
@@ -60,6 +58,14 @@ public class SignInFragment extends Fragment {
                     return true;
                 }
                 return false;
+            }
+        });
+
+        Button signInButton = (Button) view.findViewById(R.id.signin_signin_button);
+        signInButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                trySignin();
             }
         });
 
@@ -77,7 +83,8 @@ public class SignInFragment extends Fragment {
             task.cancel();
     }
 
-    void trySignin() {
+    private void trySignin() {
+        SignInValidator validator = new SignInValidator(getView());
         if (validator.validate()) {
             task = new SignInTask(this,
                     emailField.getText().toString(),
@@ -96,8 +103,8 @@ public class SignInFragment extends Fragment {
 
     void failSignin(String text, Exception e) {
         displayDialog(text + (e != null ? "\n" + e.getLocalizedMessage() : ""));
-        Log.wtf(TAG, text, e);
         shakeStage();
+        Log.wtf(TAG, text, e);
     }
 
     private void shakeStage() {

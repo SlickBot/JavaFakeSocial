@@ -1,7 +1,7 @@
 package com.slicky.ulj.javafakesocial.activity.login;
 
 import com.slicky.ulj.javafakesocial.activity.ProgressDialogTask;
-import com.slicky.ulj.javafakesocial.db.DummyDBHandler;
+import com.slicky.ulj.javafakesocial.db.FakeDBHandler;
 
 import java.io.IOException;
 
@@ -33,7 +33,7 @@ class SignUpTask extends ProgressDialogTask<Boolean> {
 
     @Override
     public Boolean backgroundTask() throws IOException {
-        return DummyDBHandler.getInstance().signup(first, last, email, password);
+        return FakeDBHandler.getInstance().signup(first, last, email, password);
     }
 
     @Override

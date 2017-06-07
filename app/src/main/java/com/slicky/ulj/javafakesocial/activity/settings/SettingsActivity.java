@@ -88,8 +88,8 @@ public class SettingsActivity extends BackableActivity {
         durationField.setText(String.format(Locale.getDefault(), "%d", duration));
         randomSwitch.setChecked(random);
 
-        int id = random ? R.color.colorTextDark : R.color.colorText;
-        int color = ContextCompat.getColor(this, id);
+        int colorId = random ? R.color.colorTextDark : R.color.colorText;
+        int color = ContextCompat.getColor(this, colorId);
 
         durationText.setTextColor(color);
         durationField.setTextColor(color);

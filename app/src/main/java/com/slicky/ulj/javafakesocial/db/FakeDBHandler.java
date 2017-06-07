@@ -15,9 +15,9 @@ import java.util.concurrent.TimeUnit;
 /**
  * Created by SlickyPC on 20.5.2017
  */
-public class DummyDBHandler implements DBHandler {
+public class FakeDBHandler implements DBHandler {
 
-    private static final DummyDBHandler instance = new DummyDBHandler();
+    private static final FakeDBHandler instance = new FakeDBHandler();
     private static final Object lock = new Object();
 
     private Person user = null;
@@ -25,9 +25,9 @@ public class DummyDBHandler implements DBHandler {
     private List<Content> contents = null;
     private boolean signedIn;
 
-    private DummyDBHandler() {}
+    private FakeDBHandler() {}
 
-    public static DummyDBHandler getInstance() {
+    public static FakeDBHandler getInstance() {
         return instance;
     }
 
@@ -104,6 +104,7 @@ public class DummyDBHandler implements DBHandler {
     }
 
     private void queryData() throws IOException {
+        // In case multiple calls happen.
         synchronized (lock) {
             // Find person candidates.
             List<Person> candidates = findCandidates();
@@ -117,7 +118,7 @@ public class DummyDBHandler implements DBHandler {
     }
 
     private List<Person> findCandidates() throws IOException {
-        // Query PersonQuery for new random persons.
+        // Blocking api request for new random persons.
         PersonQuery query = ApiServices.personApi()
                 .getPerson(50, null, null, null, null)
                 .execute().body();
@@ -139,7 +140,7 @@ public class DummyDBHandler implements DBHandler {
         Random random = new Random();
 
         for (int i = 0; i < 10; i++) {
-            // Query ContentService for new Content text.
+            // Blocking api request for new Content text.
             String query = ApiServices.contentApi()
                     .getContent("", "")
                     .execute().body();

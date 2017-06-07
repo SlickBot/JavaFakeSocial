@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import com.slicky.ulj.javafakesocial.FakeUtils;
 import com.slicky.ulj.javafakesocial.R;
@@ -27,7 +28,6 @@ public class SignUpFragment extends Fragment {
     private EditText secondPasswordField;
 
     private SignUpTask task;
-    private SignUpValidator validator;
 
     static SignUpFragment newInstance() {
         return new SignUpFragment();
@@ -44,13 +44,19 @@ public class SignUpFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.signup_fragment, container, false);
 
-        validator = new SignUpValidator(view);
-
         firstField = (EditText) view.findViewById(R.id.signup_first_name);
         lastField = (EditText) view.findViewById(R.id.signup_last_name);
         emailField = (EditText) view.findViewById(R.id.signup_email);
         firstPasswordField = (EditText) view.findViewById(R.id.signup_first_password);
         secondPasswordField = (EditText) view.findViewById(R.id.signup_second_password);
+
+        Button signUpButton = (Button) view.findViewById(R.id.signup_signup_button);
+        signUpButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                trySignup();
+            }
+        });
 
         return view;
     }
@@ -62,7 +68,8 @@ public class SignUpFragment extends Fragment {
             task.cancel();
     }
 
-    void trySignup() {
+    private void trySignup() {
+        SignUpValidator validator = new SignUpValidator(getView());
         if (validator.validate()) {
             if (validator.acceptedLegalNotice()) {
                 task = new SignUpTask(this,
@@ -87,8 +94,8 @@ public class SignUpFragment extends Fragment {
 
     void failSignup(String text, Exception e) {
         displayDialog(text + (e != null ? "\n" + e.getLocalizedMessage() : ""));
-        Log.wtf(TAG, text, e);
         shakeStage();
+        Log.wtf(TAG, text, e);
     }
 
     private void shakeStage() {

@@ -2,7 +2,7 @@ package com.slicky.ulj.javafakesocial.activity.friends;
 
 import com.slicky.ulj.javafakesocial.activity.ProgressDialogTask;
 import com.slicky.ulj.javafakesocial.model.person.Person;
-import com.slicky.ulj.javafakesocial.db.DummyDBHandler;
+import com.slicky.ulj.javafakesocial.db.FakeDBHandler;
 
 import java.io.IOException;
 import java.util.List;
@@ -21,7 +21,7 @@ class FriendsTask extends ProgressDialogTask<List<Person>> {
 
     @Override
     public List<Person> backgroundTask() throws IOException {
-        return DummyDBHandler.getInstance().getFriends();
+        return FakeDBHandler.getInstance().getFriends();
     }
 
     @Override
