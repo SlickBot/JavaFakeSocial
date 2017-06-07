@@ -10,7 +10,7 @@ ext {
     retrofit_version = '2.1.0'
     okhttp_version = '2.7.5'
     picasso_version = '2.5.2'
-    picasso_transformations_version = '2.1.2'
+    picasso_transform_version = '2.1.2'
 }
 
 android {
@@ -68,7 +68,7 @@ dependencies {
 
     // picasso
     compile "com.squareup.picasso:picasso:$picasso_version"
-    compile "jp.wasabeef:picasso-transformations:$picasso_transformations_version"
+    compile "jp.wasabeef:picasso-transformations:$picasso_transform_version"
 
     // testing
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {

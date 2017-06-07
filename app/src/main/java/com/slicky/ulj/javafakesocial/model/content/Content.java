@@ -7,7 +7,6 @@ import com.slicky.ulj.javafakesocial.model.person.Person;
 /**
  * Created by SlickyPC on 17.5.2017
  */
-@SuppressWarnings("unused")
 public class Content implements Parcelable {
 
     private final Person owner;

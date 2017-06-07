@@ -32,11 +32,10 @@ class ContentAdapter extends RecyclerView.Adapter<ContentViewHolder> {
     }
 
     void setContent(List<Content> content) {
-        if (content != null) {
-            contentList.clear();
+        contentList.clear();
+        if (content != null)
             contentList.addAll(content);
-            notifyDataSetChanged();
-        }
+        notifyDataSetChanged();
     }
 
     @Override

@@ -1,7 +1,7 @@
 package com.slicky.ulj.javafakesocial;
 
 import com.slicky.ulj.javafakesocial.model.person.PersonQuery;
-import com.slicky.ulj.javafakesocial.rest.person.PersonService;
+import com.slicky.ulj.javafakesocial.rest.ApiServices;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -16,7 +16,7 @@ public class PersonServiceTest {
 
     @Before
     public void can_receive_query() throws Exception {
-        query = PersonService.getInstance().getPerson(
+        query = ApiServices.personApi().getPerson(
                 4,
                 null,
                 "1",

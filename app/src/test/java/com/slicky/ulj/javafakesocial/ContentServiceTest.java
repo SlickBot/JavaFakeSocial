@@ -1,6 +1,6 @@
 package com.slicky.ulj.javafakesocial;
 
-import com.slicky.ulj.javafakesocial.rest.content.ContentService;
+import com.slicky.ulj.javafakesocial.rest.ApiServices;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -15,7 +15,7 @@ public class ContentServiceTest {
 
     @Before
     public void can_receive_query() throws Exception {
-        content = ContentService.getInstance().getContent(
+        content = ApiServices.contentApi().getContent(
                 "car",
                 "apple"
         ).execute().body();

@@ -30,11 +30,10 @@ class FriendsAdapter extends RecyclerView.Adapter<FriendsViewHolder> {
     }
 
     void setFriends(List<Person> friends) {
-        if (friends != null) {
-            friendsList.clear();
+        friendsList.clear();
+        if (friends != null)
             friendsList.addAll(friends);
-            notifyDataSetChanged();
-        }
+        notifyDataSetChanged();
     }
 
     @Override

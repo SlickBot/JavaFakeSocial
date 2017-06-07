@@ -49,7 +49,7 @@ public class NotifyingService extends IntentService {
     }
 
     private void displayNotification() {
-        new FakePreferences(this).setNotifyOn(false);
+        prefs.setNotifyOn(false);
 
         Intent callbackIntent = new Intent(getApplicationContext(), ContentActivity.class);
         PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(), 0, callbackIntent, 0);
