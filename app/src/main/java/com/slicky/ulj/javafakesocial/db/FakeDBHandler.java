@@ -20,6 +20,8 @@ public class FakeDBHandler implements DBHandler {
     private static final FakeDBHandler instance = new FakeDBHandler();
     private static final Object lock = new Object();
 
+    private Random random = new Random();
+
     private Person user = null;
     private List<Person> friends = null;
     private List<Content> contents = null;
@@ -72,7 +74,7 @@ public class FakeDBHandler implements DBHandler {
         // Simulate network work.
         simulateWork();
         // Create new Content.
-        Content content = new Content(user, text, System.currentTimeMillis());
+        Content content = new Content(random.nextLong(), user, text, System.currentTimeMillis());
         // Create new Content list with new Content in top.
         ArrayList<Content> newContents = new ArrayList<>();
         newContents.add(content);
@@ -101,6 +103,13 @@ public class FakeDBHandler implements DBHandler {
         if (contents == null)
             queryData();
         return contents;
+    }
+
+    @Override
+    public Void removeContent(Content content) {
+        simulateWork();
+        contents.remove(content);
+        return null;
     }
 
     private void queryData() throws IOException {
@@ -137,7 +146,6 @@ public class FakeDBHandler implements DBHandler {
 
     private List<Content> generateContent() throws IOException {
         ArrayList<Content> list = new ArrayList<>();
-        Random random = new Random();
 
         for (int i = 0; i < 10; i++) {
             // Blocking api request for new Content text.
@@ -160,7 +168,7 @@ public class FakeDBHandler implements DBHandler {
             int timePassed = random.nextInt(1000 * 60 * 60 * 24);
 
             // Create new Content and add it to list.
-            Content content = new Content(randy, query, lastPostTime - timePassed);
+            Content content = new Content(random.nextLong(), randy, query, lastPostTime - timePassed);
             list.add(content);
         }
         return list;

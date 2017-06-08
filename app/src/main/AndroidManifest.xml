@@ -16,8 +16,7 @@
 
         <service
                 android:name=".activity.service.NotifyingService"
-                android:exported="false"
-                />
+                android:exported="false"/>
 
         <activity
                 android:name=".activity.login.LoginActivity"
@@ -34,6 +33,11 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+
+        <activity
+                android:name=".activity.detail.DetailActivity"
+                android:label="Detail"
+                android:parentActivityName=".activity.content.ContentActivity"/>
 
         <activity
                 android:name=".activity.profile.ProfileActivity"

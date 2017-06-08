@@ -21,6 +21,20 @@ public class ProfileActivity extends BackableActivity {
     private static final String KEY_PERSON = TAG + ".person";
     private static final String KEY_OWNER = TAG + ".owner";
 
+    public static Intent getOwnerIntent(Context context, Person owner) {
+        Intent intent = new Intent(context, ProfileActivity.class);
+        intent.putExtra(KEY_PERSON, owner);
+        intent.putExtra(KEY_OWNER, true);
+        return intent;
+    }
+
+    public static Intent getFriendIntent(Context context, Person friend) {
+        Intent intent = new Intent(context, ProfileActivity.class);
+        intent.putExtra(KEY_PERSON, friend);
+        intent.putExtra(KEY_OWNER, false);
+        return intent;
+    }
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,6 +78,7 @@ public class ProfileActivity extends BackableActivity {
                 .placeholder(R.drawable.ic_user)
                 .transform(new CropCircleTransformation())
                 .into(imageView);
+
         nameField.setText(name);
         emailField.setText(email);
         cellField.setText(cell);
@@ -74,19 +89,5 @@ public class ProfileActivity extends BackableActivity {
         cityField.setText(city);
         stateField.setText(state);
         natField.setText(nat);
-    }
-
-    public static Intent getOwnerIntent(Context context, Person owner) {
-        Intent intent = new Intent(context, ProfileActivity.class);
-        intent.putExtra(KEY_PERSON, owner);
-        intent.putExtra(KEY_OWNER, true);
-        return intent;
-    }
-
-    public static Intent getFriendIntent(Context context, Person friend) {
-        Intent intent = new Intent(context, ProfileActivity.class);
-        intent.putExtra(KEY_PERSON, friend);
-        intent.putExtra(KEY_OWNER, false);
-        return intent;
     }
 }

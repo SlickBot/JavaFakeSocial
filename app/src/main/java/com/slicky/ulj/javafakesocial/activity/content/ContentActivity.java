@@ -20,6 +20,7 @@ import com.slicky.ulj.javafakesocial.R;
 import com.slicky.ulj.javafakesocial.activity.ProgressDialogTask;
 import com.slicky.ulj.javafakesocial.activity.about.AboutActivity;
 import com.slicky.ulj.javafakesocial.activity.creator.CreatorActivity;
+import com.slicky.ulj.javafakesocial.activity.detail.DetailActivity;
 import com.slicky.ulj.javafakesocial.activity.friends.FriendsActivity;
 import com.slicky.ulj.javafakesocial.activity.login.LoginActivity;
 import com.slicky.ulj.javafakesocial.activity.profile.ProfileActivity;
@@ -147,8 +148,8 @@ public class ContentActivity
         startActivity(intent);
     }
 
-    void openFriendProfile(Person person) {
-        Intent intent = ProfileActivity.getFriendIntent(this, person);
+    void openDetails(Content content) {
+        Intent intent = DetailActivity.getDetailIntent(this, content);
         startActivity(intent);
     }
 

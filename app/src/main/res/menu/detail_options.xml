@@ -5,8 +5,8 @@
       tools:ignore="HardcodedText">
 
     <item
-            android:id="@+id/action_create"
-            android:icon="@android:drawable/ic_menu_edit"
-            android:title="Create"
+            android:id="@+id/action_remove"
+            android:icon="@android:drawable/ic_menu_delete"
+            android:title="Remove"
             app:showAsAction="always"/>
 </menu>

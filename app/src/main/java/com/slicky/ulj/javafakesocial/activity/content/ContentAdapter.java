@@ -48,7 +48,7 @@ class ContentAdapter extends RecyclerView.Adapter<ContentViewHolder> {
             public void onClick(View v) {
                 int itemPosition = recycler.getChildLayoutPosition(view);
                 Content content = contentList.get(itemPosition);
-                activity.openFriendProfile(content.getOwner());
+                activity.openDetails(content);
             }
         });
 

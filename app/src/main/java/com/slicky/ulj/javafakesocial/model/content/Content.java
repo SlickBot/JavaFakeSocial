@@ -9,24 +9,6 @@ import com.slicky.ulj.javafakesocial.model.person.Person;
  */
 public class Content implements Parcelable {
 
-    private final Person owner;
-    private final String text;
-    private final long postedAt;
-
-    public Content(Person owner,
-                   String text,
-                   long postedAt) {
-        this.owner = owner;
-        this.postedAt = postedAt;
-        this.text = text;
-    }
-
-    private Content(Parcel in) {
-        this.owner = in.readParcelable(Person.class.getClassLoader());
-        this.text = in.readString();
-        this.postedAt = in.readLong();
-    }
-
     public static final Parcelable.Creator<Content> CREATOR = new Parcelable.Creator<Content>() {
         @Override
         public Content createFromParcel(Parcel source) {
@@ -39,8 +21,31 @@ public class Content implements Parcelable {
         }
     };
 
+    private final long id;
+    private final Person owner;
+    private final String text;
+    private final long postedAt;
+
+    public Content(long id,
+                   Person owner,
+                   String text,
+                   long postedAt) {
+        this.id = id;
+        this.owner = owner;
+        this.postedAt = postedAt;
+        this.text = text;
+    }
+
+    private Content(Parcel in) {
+        this.id = in.readLong();
+        this.owner = in.readParcelable(Person.class.getClassLoader());
+        this.text = in.readString();
+        this.postedAt = in.readLong();
+    }
+
     @Override
     public void writeToParcel(Parcel dest, int flags) {
+        dest.writeLong(this.id);
         dest.writeParcelable(this.owner, flags);
         dest.writeString(this.text);
         dest.writeLong(this.postedAt);
@@ -49,6 +54,10 @@ public class Content implements Parcelable {
     @Override
     public int describeContents() {
         return 0;
+    }
+
+    public long getId() {
+        return id;
     }
 
     public Person getOwner() {
@@ -61,5 +70,15 @@ public class Content implements Parcelable {
 
     public long getPostedAt() {
         return postedAt;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o)
+            return true;
+        if (!(o instanceof Content))
+            return false;
+        Content content = (Content) o;
+        return id == content.id;
     }
 }
