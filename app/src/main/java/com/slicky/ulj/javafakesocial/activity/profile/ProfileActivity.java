@@ -13,8 +13,6 @@ import com.slicky.ulj.javafakesocial.model.person.Person;
 import com.squareup.picasso.Picasso;
 import jp.wasabeef.picasso.transformations.CropCircleTransformation;
 
-import static org.apache.commons.lang3.text.WordUtils.capitalize;
-
 /**
  * Created by SlickyPC on 22.5.2017
  */
@@ -57,9 +55,9 @@ public class ProfileActivity extends BackableActivity {
         String phone = person.getPhone();
         CharSequence birthday = FakeUtils.getFormattedWithTime(person.getDob());
         CharSequence registered = FakeUtils.getFormattedWithTime(person.getRegistered());
-        String street = capitalize(person.getLocation().getStreet());
-        String city = capitalize(person.getLocation().getCity());
-        String state = capitalize(person.getLocation().getState());
+        String street = FakeUtils.capitalizeAll(person.getLocation().getStreet());
+        String city = FakeUtils.capitalizeAll(person.getLocation().getCity());
+        String state = FakeUtils.capitalizeAll(person.getLocation().getState());
         String nat = FakeUtils.getCountryFromCode(person.getNat());
 
         Picasso.with(this).load(imageUrl)

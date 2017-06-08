@@ -33,12 +33,4 @@ class LoginAdapter extends FragmentPagerAdapter {
     public int getCount() {
         return 2;
     }
-
-    SignInFragment getSigninFragment() {
-        return signinFragment;
-    }
-
-    SignUpFragment getSignupFragment() {
-        return signupFragment;
-    }
 }

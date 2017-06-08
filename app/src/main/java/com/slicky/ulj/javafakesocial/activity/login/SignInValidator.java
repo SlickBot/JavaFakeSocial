@@ -3,7 +3,6 @@ package com.slicky.ulj.javafakesocial.activity.login;
 import android.support.design.widget.TextInputLayout;
 import android.util.Patterns;
 import android.view.View;
-import android.widget.EditText;
 import com.slicky.ulj.javafakesocial.R;
 
 /**
@@ -14,15 +13,9 @@ class SignInValidator {
     private TextInputLayout emailLayout;
     private TextInputLayout passwordLayout;
 
-    private EditText emailField;
-    private EditText passwordField;
-
     SignInValidator(View view) {
         emailLayout = (TextInputLayout) view.findViewById(R.id.signin_email_layout);
-        emailField = emailLayout.getEditText();
-
         passwordLayout = (TextInputLayout) view.findViewById(R.id.signin_password_layout);
-        passwordField = passwordLayout.getEditText();
     }
 
     boolean validate() {
@@ -31,8 +24,8 @@ class SignInValidator {
 
         View errorField = null;
 
-        String email = emailField.getText().toString();
-        String password = passwordField.getText().toString();
+        String email = emailLayout.getEditText().getText().toString();
+        String password = passwordLayout.getEditText().getText().toString();
 
         if (email.length() < 5) {
             emailLayout.setError("Email is too short! (min 5)");

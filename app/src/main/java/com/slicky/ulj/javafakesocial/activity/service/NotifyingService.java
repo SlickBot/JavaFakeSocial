@@ -35,13 +35,11 @@ public class NotifyingService extends IntentService {
 
     @Override
     protected void onHandleIntent(Intent intent) {
-        boolean isOn = prefs.isNotifyOn();
-        boolean isRandom = prefs.isNotifyRandom();
-        int duration = prefs.getNotifyDuration();
-
-        if (isOn) {
+        if (prefs.isNotifyOn()) {
             try {
-                int sleepInSeconds = isRandom ? new Random().nextInt(60) : duration;
+                int sleepInSeconds = prefs.isNotifyRandom()
+                        ? new Random().nextInt(60)
+                        : prefs.getNotifyDuration();
                 TimeUnit.SECONDS.sleep(sleepInSeconds);
             } catch (InterruptedException ignored) {}
             displayNotification();

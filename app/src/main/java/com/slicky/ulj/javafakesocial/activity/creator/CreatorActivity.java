@@ -35,27 +35,11 @@ public class CreatorActivity extends BackableActivity {
     }
 
     public void onNewContent(View view) {
-        if (validate()) {
+        CreatorValidator validator = new CreatorValidator(this);
+        if (validator.validate()) {
             task = new CreatorTask(this, textField.getText().toString());
             task.execute();
         }
-    }
-
-    private boolean validate() {
-        textField.setError(null);
-
-        String text = textField.getText().toString();
-        if (text.length() < 5) {
-            textField.setError("Text is too short! (minimum is 5)");
-            textField.requestFocus();
-            return false;
-        }
-        if (text.length() > 256) {
-            textField.setError("Text is too long! (minimum is 256)");
-            textField.requestFocus();
-            return false;
-        }
-        return true;
     }
 
     void onCreatingSuccess() {

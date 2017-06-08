@@ -15,14 +15,13 @@ import com.slicky.ulj.javafakesocial.R;
 public class LoginActivity extends AppCompatActivity {
 
     private ViewPager viewPager;
-    private LoginAdapter adapter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_activity);
 
-        adapter = new LoginAdapter(getSupportFragmentManager());
+        LoginAdapter adapter = new LoginAdapter(getSupportFragmentManager());
 
         viewPager = (ViewPager) findViewById(R.id.container);
         viewPager.setAdapter(adapter);

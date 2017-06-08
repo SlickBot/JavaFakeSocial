@@ -1,9 +1,8 @@
 package com.slicky.ulj.javafakesocial.activity.about;
 
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import com.slicky.ulj.javafakesocial.FakeUtils;
 import com.slicky.ulj.javafakesocial.R;
 import com.slicky.ulj.javafakesocial.activity.BackableActivity;
 import com.slicky.ulj.javafakesocial.rest.ApiServices;
@@ -20,12 +19,10 @@ public class AboutActivity extends BackableActivity {
     }
 
     public void onRandomUserClick(View view) {
-        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(ApiServices.PERSON_URL));
-        startActivity(browserIntent);
+        FakeUtils.startBrowseActivity(this, ApiServices.PERSON_URL);
     }
 
     public void onWatchOutClick(View view) {
-        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(ApiServices.CONTENT_URL));
-        startActivity(browserIntent);
+        FakeUtils.startBrowseActivity(this, ApiServices.CONTENT_URL);
     }
 }

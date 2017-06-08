@@ -149,7 +149,7 @@ public class FakeDBHandler implements DBHandler {
                 throw new IOException("Did not receive Content (is null)");
 
             // Pick random Content owner.
-            Person randy = friends.get(new Random().nextInt(friends.size()));
+            Person randy = friends.get(random.nextInt(friends.size()));
 
             // Find last post time or set it to currentTimeMillis.
             long lastPostTime = list.size() > 0

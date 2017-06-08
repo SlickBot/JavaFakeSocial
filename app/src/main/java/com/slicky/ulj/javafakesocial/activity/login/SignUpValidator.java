@@ -4,7 +4,6 @@ import android.support.design.widget.TextInputLayout;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.CheckBox;
-import android.widget.EditText;
 import com.slicky.ulj.javafakesocial.R;
 
 /**
@@ -18,12 +17,6 @@ class SignUpValidator {
     private TextInputLayout firstPasswordLayout;
     private TextInputLayout secondPasswordLayout;
 
-    private EditText firstField;
-    private EditText lastField;
-    private EditText emailField;
-    private EditText firstPasswordField;
-    private EditText secondPasswordField;
-
     private CheckBox legalCheckBox;
 
     SignUpValidator(View view) {
@@ -33,13 +26,11 @@ class SignUpValidator {
         firstPasswordLayout = (TextInputLayout) view.findViewById(R.id.signup_first_password_layout);
         secondPasswordLayout = (TextInputLayout) view.findViewById(R.id.signup_second_password_layout);
 
-        firstField = firstLayout.getEditText();
-        lastField = lastLayout.getEditText();
-        emailField = emailLayout.getEditText();
-        firstPasswordField = firstPasswordLayout.getEditText();
-        secondPasswordField = secondPasswordLayout.getEditText();
-
         legalCheckBox = (CheckBox) view.findViewById(R.id.legal_checkbox);
+    }
+
+    boolean acceptedLegalNotice() {
+        return legalCheckBox.isChecked();
     }
 
     boolean validate() {
@@ -51,11 +42,11 @@ class SignUpValidator {
         firstPasswordLayout.setError(null);
         secondPasswordLayout.setError(null);
 
-        String first = firstField.getText().toString();
-        String last = lastField.getText().toString();
-        String email = emailField.getText().toString();
-        String firstPassword = firstPasswordField.getText().toString();
-        String secondPassword = secondPasswordField.getText().toString();
+        String first = firstLayout.getEditText().getText().toString();
+        String last = lastLayout.getEditText().getText().toString();
+        String email = emailLayout.getEditText().getText().toString();
+        String firstPassword = firstPasswordLayout.getEditText().getText().toString();
+        String secondPassword = secondPasswordLayout.getEditText().getText().toString();
 
         if (first.length() < 2) {
             firstLayout.setError("First name is too short! (min 2)");
@@ -110,9 +101,5 @@ class SignUpValidator {
         }
 
         return true;
-    }
-
-    boolean acceptedLegalNotice() {
-        return legalCheckBox.isChecked();
     }
 }

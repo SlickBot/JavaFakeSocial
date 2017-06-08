@@ -5,8 +5,6 @@ ext {
     constraint_layout_version = '1.0.2'
     pageindicatorview_version = '0.1.2'
 
-    commons_lang3_version = '3.5'
-
     retrofit_version = '2.1.0'
     okhttp_version = '2.7.5'
     picasso_version = '2.5.2'
@@ -54,9 +52,6 @@ dependencies {
     compile "com.android.support:design:$support_version"
     compile "com.android.support:support-vector-drawable:$support_version"
     compile "com.android.support.constraint:constraint-layout:$constraint_layout_version"
-
-    // apache commons lang
-    compile "org.apache.commons:commons-lang3:$commons_lang3_version"
 
     // page indicator view
     compile "com.romandanylyk:pageindicatorview:$pageindicatorview_version@aar"

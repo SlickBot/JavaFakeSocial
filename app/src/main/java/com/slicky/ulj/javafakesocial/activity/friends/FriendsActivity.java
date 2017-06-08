@@ -30,8 +30,6 @@ public class FriendsActivity extends BackableActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.friends_activity);
 
-
-
         RecyclerView recycler = (RecyclerView) findViewById(R.id.friends_recycler_view);
         friendsAdapter = new FriendsAdapter(this, recycler);
 
