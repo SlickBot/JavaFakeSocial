@@ -93,7 +93,7 @@ public class SignUpFragment extends Fragment {
     }
 
     private void shakeStage() {
-        FakeUtils.shake(getContext(), firstField, lastField, emailField, firstPasswordField, secondPasswordField);
+        FakeUtils.shakeContext(getContext(), firstField, lastField, emailField, firstPasswordField, secondPasswordField);
     }
 
     private void displayDialog(final String text) {

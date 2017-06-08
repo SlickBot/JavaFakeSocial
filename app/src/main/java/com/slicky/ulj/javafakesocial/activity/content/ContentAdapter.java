@@ -64,6 +64,7 @@ class ContentAdapter extends RecyclerView.Adapter<ContentViewHolder> {
         holder.getOwnerName().setText(FakeUtils.getFullPersonName(owner));
         holder.getPostedAt().setText(FakeUtils.getFormattedWithTime(postedAt));
         holder.getContent().setText(content.getText());
+
         Picasso.with(activity)
                 .load(owner.getPicture().getMedium())
                 .placeholder(R.drawable.ic_user)

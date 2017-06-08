@@ -102,7 +102,7 @@ public class SignInFragment extends Fragment {
     }
 
     private void shakeStage() {
-        FakeUtils.shake(getContext(), emailField, passwordField);
+        FakeUtils.shakeContext(getContext(), emailField, passwordField);
     }
 
     private void displayDialog(final String text) {

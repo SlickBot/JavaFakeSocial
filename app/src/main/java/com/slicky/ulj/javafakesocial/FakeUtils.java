@@ -68,7 +68,7 @@ public class FakeUtils {
         return new Locale("", nat).getDisplayCountry(new Locale("en"));
     }
 
-    public static void shake(Context context, View... views) {
+    public static void shakeContext(Context context, View... views) {
         Vibrator vibrator = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
         vibrator.vibrate(SHAKE_DURATION);
         for (View view : views) {

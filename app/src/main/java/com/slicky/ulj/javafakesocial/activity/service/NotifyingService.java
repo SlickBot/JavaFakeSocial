@@ -53,7 +53,7 @@ public class NotifyingService extends IntentService {
         PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(), 0, callbackIntent, 0);
 
         Notification notification = new NotificationCompat.Builder(this)
-                .setSmallIcon(R.drawable.logo_transparent)
+                .setSmallIcon(R.drawable.logo)
                 .setContentIntent(pendingIntent)
                 .setContentTitle(getString(R.string.app_name))
                 .setSubText("Time ran out!")
