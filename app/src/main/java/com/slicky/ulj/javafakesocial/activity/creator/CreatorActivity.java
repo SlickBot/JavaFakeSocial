@@ -43,20 +43,11 @@ public class CreatorActivity extends BackableActivity {
     }
 
     void onCreatingSuccess() {
-        displayDialog("Successfully uploaded new Content!");
-    }
-
-    void onCreatingFail(String text, Exception e) {
-        displayDialog(text + (e != null ? "\n" + e.getLocalizedMessage() : ""));
-        Log.wtf(TAG, text, e);
-    }
-
-    private void displayDialog(final String text) {
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
                 AlertDialog.Builder builder = new AlertDialog.Builder(CreatorActivity.this, R.style.AppTheme_Dialog)
-                        .setMessage(text)
+                        .setMessage("Successfully uploaded new Content!")
                         .setCancelable(false)
                         .setPositiveButton("Cool!", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
@@ -66,5 +57,17 @@ public class CreatorActivity extends BackableActivity {
                 builder.create().show();
             }
         });
+    }
+
+    void onCreatingFail(final String text, final Exception e) {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                AlertDialog.Builder builder = new AlertDialog.Builder(CreatorActivity.this, R.style.AppTheme_Dialog)
+                        .setMessage(text + (e != null ? "\n" + e.getLocalizedMessage() : ""));
+                builder.create().show();
+            }
+        });
+        Log.wtf(TAG, text, e);
     }
 }
