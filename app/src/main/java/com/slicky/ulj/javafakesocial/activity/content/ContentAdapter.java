@@ -23,18 +23,16 @@ class ContentAdapter extends RecyclerView.Adapter<ContentViewHolder> {
     private ContentActivity activity;
     private RecyclerView recycler;
 
-    private ArrayList<Content> contentList;
+    private List<Content> contents;
 
     ContentAdapter(ContentActivity activity, RecyclerView recycler) {
         this.activity = activity;
         this.recycler = recycler;
-        contentList = new ArrayList<>();
+        contents = new ArrayList<>();
     }
 
-    void setContent(List<Content> content) {
-        contentList.clear();
-        if (content != null)
-            contentList.addAll(content);
+    void setContent(List<Content> contents) {
+        this.contents = contents;
         notifyDataSetChanged();
     }
 
@@ -47,7 +45,7 @@ class ContentAdapter extends RecyclerView.Adapter<ContentViewHolder> {
             @Override
             public void onClick(View v) {
                 int itemPosition = recycler.getChildLayoutPosition(view);
-                Content content = contentList.get(itemPosition);
+                Content content = contents.get(itemPosition);
                 activity.openDetails(content);
             }
         });
@@ -57,7 +55,7 @@ class ContentAdapter extends RecyclerView.Adapter<ContentViewHolder> {
 
     @Override
     public void onBindViewHolder(ContentViewHolder holder, int position) {
-        Content content = contentList.get(position);
+        Content content = contents.get(position);
         Person owner = content.getOwner();
         Date postedAt = new Date(content.getPostedAt());
 
@@ -74,6 +72,6 @@ class ContentAdapter extends RecyclerView.Adapter<ContentViewHolder> {
 
     @Override
     public int getItemCount() {
-        return contentList.size();
+        return contents.size();
     }
 }

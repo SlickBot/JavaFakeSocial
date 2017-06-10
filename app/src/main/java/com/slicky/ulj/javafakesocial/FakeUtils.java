@@ -89,6 +89,14 @@ public class FakeUtils {
         view.startAnimation(shake);
     }
 
+    public static void startShareActivity(Activity activity, String subject, String text) {
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setType("text/plain");
+        intent.putExtra(Intent.EXTRA_SUBJECT, subject);
+        intent.putExtra(Intent.EXTRA_TEXT, text);
+        activity.startActivity(Intent.createChooser(intent, "Share via"));
+    }
+
     public static void startBrowseActivity(Activity activity, String url) {
         Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
         activity.startActivity(browserIntent);

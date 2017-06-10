@@ -21,18 +21,16 @@ class FriendsAdapter extends RecyclerView.Adapter<FriendsViewHolder> {
     private FriendsActivity activity;
     private RecyclerView recycler;
 
-    private ArrayList<Person> friendsList;
+    private List<Person> friends;
 
     FriendsAdapter(FriendsActivity activity, RecyclerView recycler) {
         this.activity = activity;
         this.recycler = recycler;
-        friendsList = new ArrayList<>();
+        friends = new ArrayList<>();
     }
 
     void setFriends(List<Person> friends) {
-        friendsList.clear();
-        if (friends != null)
-            friendsList.addAll(friends);
+        this.friends = friends;
         notifyDataSetChanged();
     }
 
@@ -45,7 +43,7 @@ class FriendsAdapter extends RecyclerView.Adapter<FriendsViewHolder> {
             @Override
             public void onClick(View v) {
                 int itemPosition = recycler.getChildLayoutPosition(view);
-                Person friend = friendsList.get(itemPosition);
+                Person friend = friends.get(itemPosition);
                 activity.openFriendProfile(friend);
             }
         });
@@ -55,7 +53,7 @@ class FriendsAdapter extends RecyclerView.Adapter<FriendsViewHolder> {
 
     @Override
     public void onBindViewHolder(FriendsViewHolder holder, int position) {
-        Person friend = friendsList.get(position);
+        Person friend = friends.get(position);
 
         holder.getFriendName().setText(FakeUtils.getFullPersonName(friend));
         holder.getFriendInfo().setText(FakeUtils.getPersonInfo(friend));
@@ -68,6 +66,6 @@ class FriendsAdapter extends RecyclerView.Adapter<FriendsViewHolder> {
 
     @Override
     public int getItemCount() {
-        return friendsList.size();
+        return friends.size();
     }
 }
