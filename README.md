@@ -5,7 +5,7 @@ Fake Social Project is part of my UNI thesis about comparing Android developemen
 Project is separated into multiple modules.
 - Java Fake Social (this)
 - Kotlin Fake Social ([HERE](https://github.com/SlickBot/KotlinFakeSocial/))
-- Anko Fake Social (soon)
+- Anko Fake Social ([HERE](https://github.com/SlickBot/AnkoFakeSocial/))
 
 GitCompare is used to compare languages used on Github.
 - GitCompare ([HERE](https://github.com/SlickBot/GitCompare/))
@@ -30,13 +30,13 @@ Application is comprised of 7 core mobile screen archetypes:
 
 ### Dependencies
 - [Gradle Build Tools](https://developer.android.com/studio/releases/gradle-plugin.html)
-*2.2.2*
+*3.0.0-alpha6*
 - [Android Build Tools](https://developer.android.com/studio/releases/build-tools.html)
-*25.0.3*
+*26.0.0*
 - [Android Support](https://developer.android.com/topic/libraries/support-library/index.html)
-*25.3.1*
+*26.0.0-beta2*
 - [Android Constraint Layout](https://developer.android.com/reference/android/support/constraint/ConstraintLayout.html)
-*1.0.2*
+*1.1.0-beta1*
 - [Page Indicator View](https://github.com/romandanylyk/PageIndicatorView/)
 *0.1.2*
 - [Retrofit](http://square.github.io/retrofit/)
@@ -45,5 +45,5 @@ Application is comprised of 7 core mobile screen archetypes:
 *2.7.5*
 - [Picasso](http://square.github.io/picasso/)
 *2.5.2*
-- [Picasso Transformations](https://github.com/wasabeef/picasso-transformations)
+- [Picasso Transformations](https://github.comprifie/wasabeef/picasso-transformations)
 *2.1.2*

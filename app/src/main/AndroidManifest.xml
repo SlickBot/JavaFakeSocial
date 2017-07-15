@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           xmlns:tools="http://schemas.android.com/tools"
-          package="com.slicky.ulj.javafakesocial">
+    package="com.ulj.slicky.javafakesocial">
 
     <uses-permission android:name="android.permission.VIBRATE"/>
     <uses-permission android:name="android.permission.INTERNET"/>
@@ -64,5 +64,6 @@
                 android:name=".activity.creator.CreatorActivity"
                 android:label="Creator"
                 android:parentActivityName=".activity.content.ContentActivity"/>
+
     </application>
 </manifest>

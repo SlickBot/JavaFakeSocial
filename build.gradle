@@ -1,22 +1,37 @@
 buildscript {
     ext {
-        gradle_version = '2.2.2'
+        gradle_version = '3.0.0-alpha6'
     }
+
     repositories {
+        google()
         jcenter()
     }
+
     dependencies {
         classpath "com.android.tools.build:gradle:$gradle_version"
     }
 }
 
+//plugins {
+//    id 'nebula.lint' version '7.4.0'
+//    id 'com.gradle.build-scan' version '1.8'
+//}
+
+//buildScan {
+//    licenseAgreementUrl = 'https://gradle.com/terms-of-service'
+//    licenseAgree = 'yes'
+//}
+
 allprojects {
+//    gradleLint.rules = ['unused-dependency'] // 'all-dependency', 'archaic-wrapper', 'duplicate-dependency-class'
     repositories {
+        google()
         jcenter()
+        mavenCentral()
     }
 }
 
 task clean(type: Delete) {
-    //noinspection GroovyAssignabilityCheck
     delete rootProject.buildDir
 }

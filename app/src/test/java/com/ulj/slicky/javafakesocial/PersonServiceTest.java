@@ -1,7 +1,7 @@
-package com.slicky.ulj.javafakesocial;
+package com.ulj.slicky.javafakesocial;
 
-import com.slicky.ulj.javafakesocial.model.person.PersonQuery;
-import com.slicky.ulj.javafakesocial.rest.ApiServices;
+import com.ulj.slicky.javafakesocial.model.person.PersonQuery;
+import com.ulj.slicky.javafakesocial.rest.ApiServices;
 import org.junit.Before;
 import org.junit.Test;
 
