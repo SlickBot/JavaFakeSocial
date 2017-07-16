@@ -27,7 +27,7 @@
 -keepattributes Exceptions
 
 -keep class retrofit.** { *; }
--keep class com.slicky.ulj.javafakesocial.model.** { *; }
+-keep class com.ulj.slicky.javafakesocial.model.** { *; }
 
 -keepclasseswithmembers class * {
     @retrofit.http.* <methods>;
