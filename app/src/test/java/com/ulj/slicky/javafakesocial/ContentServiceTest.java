@@ -1,6 +1,7 @@
 package com.ulj.slicky.javafakesocial;
 
 import com.ulj.slicky.javafakesocial.rest.ApiServices;
+
 import org.junit.Before;
 import org.junit.Test;
 
