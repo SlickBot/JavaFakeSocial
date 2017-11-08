@@ -152,7 +152,8 @@ public class FakeDBHandler implements DBHandler {
             // Blocking api request for new Content text.
             String query = ApiServices.contentApi()
                     .getContent("", "")
-                    .execute().body();
+                    .execute()
+                    .body();
 
             if (query == null)
                 throw new IOException("Did not receive Content (is null)");

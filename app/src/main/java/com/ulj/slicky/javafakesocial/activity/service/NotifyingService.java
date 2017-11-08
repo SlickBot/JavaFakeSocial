@@ -8,7 +8,7 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Vibrator;
-import android.support.v7.app.NotificationCompat;
+import android.support.v4.app.NotificationCompat;
 
 import com.ulj.slicky.javafakesocial.FakePreferences;
 import com.ulj.slicky.javafakesocial.R;
@@ -71,7 +71,7 @@ public class NotifyingService extends IntentService {
 
         NotificationManager manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
 
-        Notification notification = new NotificationCompat.Builder(this)
+        Notification notification = new NotificationCompat.Builder(this, "")
                 .setSmallIcon(R.drawable.logo)
                 .setContentIntent(pendingIntent)
                 .setContentTitle(getString(R.string.app_name))

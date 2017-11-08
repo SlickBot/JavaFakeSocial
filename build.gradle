@@ -1,6 +1,6 @@
 buildscript {
     ext {
-        gradle_version = '3.0.0-alpha6'
+        gradle_version = '3.0.0'
     }
 
     repositories {
