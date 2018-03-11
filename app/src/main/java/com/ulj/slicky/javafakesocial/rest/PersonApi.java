@@ -17,15 +17,13 @@ public interface PersonApi {
     // nat=us,dk,fr,gb
     // AU, BR, CA, CH, DE, DK, ES, FI, FR, GB, IE, IR, NL, NZ, TR, US
     @GET("/api")
-    Call<PersonQuery> getPerson(
-            @Query("results") int results,
-            @Nullable
-            @Query("gender") String gender,
-            @Nullable
-            @Query("seed") String seed,
-            @Nullable
-            @Query("nat") String nationality,
-            @Nullable
-            @Query("page") String page
-    );
+    Call<PersonQuery> getPerson(@Query("results") int results,
+                                @Nullable
+                                @Query("gender") String gender,
+                                @Nullable
+                                @Query("seed") String seed,
+                                @Nullable
+                                @Query("nat") String nationality,
+                                @Nullable
+                                @Query("page") String page);
 }

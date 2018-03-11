@@ -1,5 +1,6 @@
 package com.ulj.slicky.javafakesocial.activity.friends;
 
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -36,8 +37,9 @@ class FriendsAdapter extends RecyclerView.Adapter<FriendsViewHolder> {
         notifyDataSetChanged();
     }
 
+    @NonNull
     @Override
-    public FriendsViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public FriendsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         final View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.friends_item, parent, false);
 
@@ -54,7 +56,7 @@ class FriendsAdapter extends RecyclerView.Adapter<FriendsViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(FriendsViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull FriendsViewHolder holder, int position) {
         Person friend = friends.get(position);
 
         holder.getFriendName().setText(FakeUtils.getFullPersonName(friend));

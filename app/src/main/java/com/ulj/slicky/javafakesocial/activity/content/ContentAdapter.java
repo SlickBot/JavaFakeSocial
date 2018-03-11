@@ -1,5 +1,6 @@
 package com.ulj.slicky.javafakesocial.activity.content;
 
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -38,8 +39,9 @@ class ContentAdapter extends RecyclerView.Adapter<ContentViewHolder> {
         notifyDataSetChanged();
     }
 
+    @NonNull
     @Override
-    public ContentViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ContentViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         final View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.content_item, parent, false);
 
@@ -56,7 +58,7 @@ class ContentAdapter extends RecyclerView.Adapter<ContentViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(ContentViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ContentViewHolder holder, int position) {
         Content content = contents.get(position);
         Person owner = content.getOwner();
         Date postedAt = new Date(content.getPostedAt());

@@ -39,7 +39,8 @@ public class NotifyingService extends IntentService {
         prefs = new FakePreferences(this);
 
         if (SDK_INT >= 26) {
-            NotificationChannel notificationChannel = new NotificationChannel(CHANNEL_ID, CHANNEL_NAME, NotificationManager.IMPORTANCE_LOW);
+            NotificationChannel notificationChannel =
+                    new NotificationChannel(CHANNEL_ID, CHANNEL_NAME, NotificationManager.IMPORTANCE_LOW);
             notificationChannel.enableLights(true);
             notificationChannel.enableVibration(true);
             notificationChannel.setVibrationPattern(new long[]{500});
@@ -71,14 +72,14 @@ public class NotifyingService extends IntentService {
 
         NotificationManager manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
 
-        Notification notification = new NotificationCompat.Builder(this, "")
+        String appName = getString(R.string.app_name);
+        Notification notification = new NotificationCompat.Builder(this, CHANNEL_ID)
                 .setSmallIcon(R.drawable.logo)
                 .setContentIntent(pendingIntent)
-                .setContentTitle(getString(R.string.app_name))
+                .setContentTitle(appName)
                 .setSubText("Time ran out!")
-                .setContentText("You should open Java Fake Social again!")
+                .setContentText("You should open " + appName + " again!")
                 .setAutoCancel(true)
-                .setChannelId(CHANNEL_ID)
                 .build();
         manager.notify(NOTIFY_ID, notification);
 

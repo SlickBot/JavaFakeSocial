@@ -1,5 +1,7 @@
 package com.ulj.slicky.javafakesocial.rest;
 
+import android.support.annotation.NonNull;
+
 import java.io.IOException;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Type;
@@ -22,7 +24,7 @@ public class StringConverter extends Converter.Factory {
         if (String.class == type)
             return new Converter<ResponseBody, String>() {
                 @Override
-                public String convert(ResponseBody value) throws IOException {
+                public String convert(@NonNull ResponseBody value) throws IOException {
                     return value.string();
                 }
             };
@@ -37,7 +39,7 @@ public class StringConverter extends Converter.Factory {
         if (String.class == type)
             return new Converter<String, RequestBody>() {
                 @Override
-                public RequestBody convert(String value) throws IOException {
+                public RequestBody convert(@NonNull String value) throws IOException {
                     return RequestBody.create(MediaType.parse("text/plain"), value);
                 }
             };
