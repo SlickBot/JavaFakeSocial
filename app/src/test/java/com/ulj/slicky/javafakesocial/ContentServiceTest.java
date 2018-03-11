@@ -16,10 +16,10 @@ public class ContentServiceTest {
 
     @Before
     public void can_receive_query() throws Exception {
-        content = ApiServices.contentApi().getContent(
-                "car",
-                "apple"
-        ).execute().body();
+        content = ApiServices.contentApi()
+                .getContent("car", "apple")
+                .execute()
+                .body();
     }
 
     @Test

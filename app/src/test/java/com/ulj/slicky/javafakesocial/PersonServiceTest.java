@@ -17,13 +17,10 @@ public class PersonServiceTest {
 
     @Before
     public void can_receive_query() throws Exception {
-        query = ApiServices.personApi().getPerson(
-                4,
-                null,
-                "1",
-                null,
-                null
-        ).execute().body();
+        query = ApiServices.personApi()
+                .getPerson(4, null, "1", null, null)
+                .execute()
+                .body();
     }
 
     @Test
