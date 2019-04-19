@@ -41,4 +41,5 @@ class ContentViewHolder extends RecyclerView.ViewHolder {
     TextView getContent() {
         return content;
     }
+
 }

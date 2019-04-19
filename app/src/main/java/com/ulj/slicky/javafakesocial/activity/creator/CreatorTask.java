@@ -3,7 +3,6 @@ package com.ulj.slicky.javafakesocial.activity.creator;
 import com.ulj.slicky.javafakesocial.activity.ProgressDialogTask;
 import com.ulj.slicky.javafakesocial.db.FakeDBHandler;
 
-import java.io.IOException;
 import java.lang.ref.WeakReference;
 
 /**
@@ -21,7 +20,7 @@ class CreatorTask extends ProgressDialogTask<Boolean> {
     }
 
     @Override
-    public Boolean backgroundTask() throws IOException {
+    public Boolean backgroundTask() {
         return FakeDBHandler.getInstance().uploadContent(content);
     }
 

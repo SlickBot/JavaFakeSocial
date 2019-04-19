@@ -97,4 +97,5 @@ public class SettingsActivity extends BackableActivity {
         durationField.setTextColor(color);
         durationField.setEnabled(!random);
     }
+
 }

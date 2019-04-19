@@ -29,4 +29,5 @@ public interface DBHandler {
     List<Content> getContent() throws IOException;
 
     Void removeContent(Content content) throws IOException;
+
 }

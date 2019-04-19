@@ -4,7 +4,6 @@ import com.ulj.slicky.javafakesocial.activity.ProgressDialogTask;
 import com.ulj.slicky.javafakesocial.db.FakeDBHandler;
 import com.ulj.slicky.javafakesocial.model.content.Content;
 
-import java.io.IOException;
 import java.lang.ref.WeakReference;
 
 /**
@@ -22,7 +21,7 @@ class RemoveTask extends ProgressDialogTask<Void> {
     }
 
     @Override
-    public Void backgroundTask() throws IOException {
+    public Void backgroundTask() {
         return FakeDBHandler.getInstance().removeContent(content);
     }
 
@@ -35,4 +34,5 @@ class RemoveTask extends ProgressDialogTask<Void> {
     public void fail(Exception e) {
         activityReference.get().handleError("Error occurred while removing Content!", e);
     }
+
 }

@@ -35,7 +35,7 @@ public class FakeDBHandler implements DBHandler {
     }
 
     @Override
-    public boolean signin(String email, String password) throws IOException {
+    public boolean signin(String email, String password) {
         // Simulate network work.
         simulateWork();
         // TODO: This should be changed.
@@ -62,16 +62,17 @@ public class FakeDBHandler implements DBHandler {
     public boolean signup(String firstName,
                           String lastName,
                           String email,
-                          String password) throws IOException {
+                          String password) {
         // Simulate network work.
         simulateWork();
         // TODO: This should be changed.
         signedIn = true;
+        //noinspection ConstantConditions
         return signedIn;
     }
 
     @Override
-    public Boolean uploadContent(String text) throws IOException {
+    public Boolean uploadContent(String text) {
         // Simulate network work.
         simulateWork();
         // Create new Content.
@@ -188,11 +189,10 @@ public class FakeDBHandler implements DBHandler {
         return filtered;
     }
 
-
     private void simulateWork() {
         try {
             TimeUnit.SECONDS.sleep(1);
-        } catch (InterruptedException ignored) {
-        }
+        } catch (InterruptedException ignored) { }
     }
+
 }

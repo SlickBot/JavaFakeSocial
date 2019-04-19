@@ -103,4 +103,5 @@ class SignUpValidator {
 
         return true;
     }
+
 }

@@ -34,4 +34,5 @@ class ContentTask extends ProgressDialogTask<List<Content>> {
     public void fail(Exception e) {
         activityReference.get().handleError("Could not retrieve Content!", e);
     }
+
 }

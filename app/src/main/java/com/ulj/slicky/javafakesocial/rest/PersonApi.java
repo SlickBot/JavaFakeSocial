@@ -13,9 +13,11 @@ import retrofit2.http.Query;
  */
 public interface PersonApi {
 
-    // page=3&results=10&seed=abc
-    // nat=us,dk,fr,gb
-    // AU, BR, CA, CH, DE, DK, ES, FI, FR, GB, IE, IR, NL, NZ, TR, US
+    // results=[int]
+    // gender=[male|female]
+    // page=[int]
+    // seed=[string]
+    // nat=[AU|BR|CA|CH|DE|DK|ES|FI|FR|GB|IE|IR|NL|NZ|TR|US|...]
     @GET("/api")
     Call<PersonQuery> getPerson(@Query("results") int results,
                                 @Nullable

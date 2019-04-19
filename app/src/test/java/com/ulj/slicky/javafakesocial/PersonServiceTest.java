@@ -13,12 +13,13 @@ import static org.junit.Assert.assertNotNull;
  * Created by SlickyPC on 17.5.2017
  */
 public class PersonServiceTest {
+
     private PersonQuery query;
 
     @Before
     public void can_receive_query() throws Exception {
         query = ApiServices.personApi()
-                .getPerson(4, null, "1", null, null)
+                .getPerson(5, null, "1", null, null)
                 .execute()
                 .body();
     }
@@ -33,4 +34,5 @@ public class PersonServiceTest {
         assertNotNull("Query results should not be null.", query.getResults());
         assertEquals("Query results should contain 5 items.", 5, query.getResults().size());
     }
+
 }

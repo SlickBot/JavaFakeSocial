@@ -19,6 +19,7 @@ import jp.wasabeef.picasso.transformations.CropCircleTransformation;
  * Created by SlickyPC on 22.5.2017
  */
 public class ProfileActivity extends BackableActivity {
+
     private static final String TAG = ProfileActivity.class.getCanonicalName();
     private static final String KEY_PERSON = TAG + ".person";
     private static final String KEY_OWNER = TAG + ".owner";
@@ -44,7 +45,15 @@ public class ProfileActivity extends BackableActivity {
 
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
+        if (extras == null) {
+            return;
+        }
+
         Person person = extras.getParcelable(KEY_PERSON);
+        if (person == null) {
+            return;
+        }
+
         boolean isOwner = extras.getBoolean(KEY_OWNER);
 
         if (isOwner)
@@ -69,8 +78,8 @@ public class ProfileActivity extends BackableActivity {
         String email = person.getEmail();
         String cell = person.getCell();
         String phone = person.getPhone();
-        CharSequence birthday = FakeUtils.getFormattedWithTime(person.getDob());
-        CharSequence registered = FakeUtils.getFormattedWithTime(person.getRegistered());
+        CharSequence birthday = FakeUtils.getFormattedWithTime(person.getDob().getDate());
+        CharSequence registered = FakeUtils.getFormattedWithTime(person.getRegistered().getDate());
         String street = FakeUtils.capitalizeAll(person.getLocation().getStreet());
         String city = FakeUtils.capitalizeAll(person.getLocation().getCity());
         String state = FakeUtils.capitalizeAll(person.getLocation().getState());
@@ -92,4 +101,5 @@ public class ProfileActivity extends BackableActivity {
         stateField.setText(state);
         natField.setText(nat);
     }
+
 }

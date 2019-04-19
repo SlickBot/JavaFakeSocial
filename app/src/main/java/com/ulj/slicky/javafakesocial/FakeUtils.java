@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Vibrator;
+import android.text.TextUtils;
 import android.text.format.DateFormat;
 import android.view.View;
 import android.view.animation.Animation;
@@ -32,12 +33,12 @@ public class FakeUtils {
     }
 
     public static String capitalizeAll(String string) {
-        String[] list = string.split(" ");
-        StringBuilder sb = new StringBuilder();
-        for (String newString : list) {
-            sb.append(capitalize(newString));
+        String[] words = string.split(" ");
+        String[] capitalized = new String[words.length];
+        for (int i = 0; i < words.length; i++) {
+            capitalized[i] = capitalize(words[i]);
         }
-        return sb.toString();
+        return TextUtils.join(" ", capitalized);
     }
 
     public static String getFullPersonName(Person person) {
@@ -71,17 +72,18 @@ public class FakeUtils {
 
     public static void shakeContext(Context context, View... views) {
         Vibrator vibrator = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
+        if (vibrator == null) {
+            return;
+        }
         vibrator.vibrate(SHAKE_DURATION);
         for (View view : views) {
-            FakeUtils.shakeView(view, SHAKE_DURATION, SHAKE_COUNT);
+            shakeView(view, SHAKE_DURATION, SHAKE_COUNT);
         }
     }
 
     private static void shakeView(View view, int duration, int count) {
         RotateAnimation shake = new RotateAnimation(
-                -3f, 3f,
-                view.getWidth() / 2,
-                view.getHeight() / 2
+                -3f, 3f, view.getWidth() / 2f, view.getHeight() / 2f
         );
         shake.setRepeatCount(count);
         shake.setRepeatMode(Animation.REVERSE);
@@ -102,4 +104,5 @@ public class FakeUtils {
         Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
         activity.startActivity(browserIntent);
     }
+
 }

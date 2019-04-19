@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
  * Created by SlickyPC on 30.5.2017
  */
 public class FakePreferences {
+
     private static final String TAG = FakePreferences.class.getCanonicalName();
     private static final String NOTIFY_ON_OFF = "notifyOnOff";
     private static final String NOTIFY_RANDOM = "notifyRandom";
@@ -41,4 +42,5 @@ public class FakePreferences {
     public void setNotifyDuration(int duration) {
         prefs.edit().putInt(NOTIFY_DURATION, duration).apply();
     }
+
 }

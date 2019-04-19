@@ -12,6 +12,7 @@ import static org.junit.Assert.assertNotNull;
  * Created by SlickyPC on 17.5.2017
  */
 public class ContentServiceTest {
+
     private String content;
 
     @Before
@@ -27,4 +28,5 @@ public class ContentServiceTest {
         assertNotNull("Content result should not be null.", content);
         assertNotEquals("Content result should not be empty.", 0, content.length());
     }
+
 }

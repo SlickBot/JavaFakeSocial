@@ -1,6 +1,9 @@
+apply plugin: "com.github.ben-manes.versions"
+
 buildscript {
     ext {
-        gradle_version = '3.0.1'
+        gradle_version = '3.4.0'
+        gradle_versions_version = '0.21.0'
     }
 
     repositories {
@@ -10,25 +13,28 @@ buildscript {
 
     dependencies {
         classpath "com.android.tools.build:gradle:$gradle_version"
+        classpath "com.github.ben-manes:gradle-versions-plugin:$gradle_versions_version"
     }
 }
 
-//plugins {
-//    id 'nebula.lint' version '7.4.0'
-//    id 'com.gradle.build-scan' version '1.8'
-//}
-
-//buildScan {
-//    licenseAgreementUrl = 'https://gradle.com/terms-of-service'
-//    licenseAgree = 'yes'
-//}
-
 allprojects {
-//    gradleLint.rules = ['unused-dependency'] // 'all-dependency', 'archaic-wrapper', 'duplicate-dependency-class'
     repositories {
         google()
         jcenter()
         mavenCentral()
+    }
+}
+
+dependencyUpdates.resolutionStrategy {
+    componentSelection { rules ->
+        rules.all { ComponentSelection selection ->
+            boolean rejected = ['alpha', 'beta', 'rc', 'cr', 'm'].any { qualifier ->
+                selection.candidate.version ==~ /(?i).*[.-]${qualifier}[.\d-]*/
+            }
+            if (rejected) {
+                selection.reject('Release candidate')
+            }
+        }
     }
 }
 

@@ -34,4 +34,5 @@ class FriendsTask extends ProgressDialogTask<List<Person>> {
     public void fail(Exception e) {
         activityReference.get().onFail("Could not retrieve Friends!", e);
     }
+
 }

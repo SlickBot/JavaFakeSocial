@@ -3,8 +3,6 @@ package com.ulj.slicky.javafakesocial.model.person;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import java.util.Date;
-
 /**
  * Created by SlickyPC on 17.5.2017
  */
@@ -16,8 +14,8 @@ public class Person implements Parcelable {
     private final PersonLocation location;
     private final String email;
     private final PersonLogin login;
-    private final Date dob;
-    private final Date registered;
+    private final PersonDOB dob;
+    private final PersonRegistered registered;
     private final String phone;
     private final String cell;
     private final PersonID id;
@@ -29,8 +27,8 @@ public class Person implements Parcelable {
                   PersonLocation location,
                   String email,
                   PersonLogin login,
-                  Date dob,
-                  Date registered,
+                  PersonDOB dob,
+                  PersonRegistered registered,
                   String phone,
                   String cell,
                   PersonID id,
@@ -56,10 +54,8 @@ public class Person implements Parcelable {
         this.location = in.readParcelable(PersonLocation.class.getClassLoader());
         this.email = in.readString();
         this.login = in.readParcelable(PersonLogin.class.getClassLoader());
-        long tmpDob = in.readLong();
-        this.dob = tmpDob == -1 ? null : new Date(tmpDob);
-        long tmpRegistered = in.readLong();
-        this.registered = tmpRegistered == -1 ? null : new Date(tmpRegistered);
+        this.dob = in.readParcelable(PersonDOB.class.getClassLoader());
+        this.registered = in.readParcelable(PersonRegistered.class.getClassLoader());
         this.phone = in.readString();
         this.cell = in.readString();
         this.id = in.readParcelable(PersonID.class.getClassLoader());
@@ -86,8 +82,8 @@ public class Person implements Parcelable {
         dest.writeParcelable(this.location, flags);
         dest.writeString(this.email);
         dest.writeParcelable(this.login, flags);
-        dest.writeLong(this.dob != null ? this.dob.getTime() : -1);
-        dest.writeLong(this.registered != null ? this.registered.getTime() : -1);
+        dest.writeParcelable(this.dob, flags);
+        dest.writeParcelable(this.registered, flags);
         dest.writeString(this.phone);
         dest.writeString(this.cell);
         dest.writeParcelable(this.id, flags);
@@ -120,11 +116,11 @@ public class Person implements Parcelable {
         return login;
     }
 
-    public Date getDob() {
+    public PersonDOB getDob() {
         return dob;
     }
 
-    public Date getRegistered() {
+    public PersonRegistered getRegistered() {
         return registered;
     }
 

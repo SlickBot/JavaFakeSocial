@@ -33,4 +33,5 @@ class UserTask extends ProgressDialogTask<Person> {
     public void fail(Exception e) {
         activityReference.get().handleError("Could not load User data!", e);
     }
+
 }

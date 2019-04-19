@@ -80,7 +80,12 @@ public class SignInFragment extends Fragment {
     }
 
     private void trySignin() {
-        SignInValidator validator = new SignInValidator(getView());
+        View view = getView();
+        if (view == null) {
+            return;
+        }
+
+        SignInValidator validator = new SignInValidator(view);
         if (validator.validate()) {
             task = new SignInTask(this,
                     emailField.getText().toString(),
@@ -94,7 +99,7 @@ public class SignInFragment extends Fragment {
     void successSignin() {
         Intent intent = new Intent(getContext(), ContentActivity.class);
         startActivity(intent);
-        getActivity().finish();
+        requireActivity().finish();
     }
 
     void failSignin(String text, Exception e) {
@@ -104,14 +109,14 @@ public class SignInFragment extends Fragment {
     }
 
     private void shakeStage() {
-        FakeUtils.shakeContext(getContext(), emailField, passwordField);
+        FakeUtils.shakeContext(requireContext(), emailField, passwordField);
     }
 
     private void displayDialog(final String text) {
-        getActivity().runOnUiThread(new Runnable() {
+        requireActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                AlertDialog.Builder builder = new AlertDialog.Builder(getContext(), R.style.AppTheme_Dialog)
+                AlertDialog.Builder builder = new AlertDialog.Builder(requireContext(), R.style.AppTheme_Dialog)
                         .setMessage(text);
                 builder.create().show();
             }

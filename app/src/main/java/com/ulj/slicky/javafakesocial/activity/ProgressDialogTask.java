@@ -67,4 +67,5 @@ public abstract class ProgressDialogTask<T> extends AsyncTask<Void, Void, T> {
     public abstract void success(T result);
 
     public abstract void fail(Exception e);
+
 }

@@ -3,8 +3,6 @@ package com.ulj.slicky.javafakesocial.activity.login;
 import com.ulj.slicky.javafakesocial.activity.ProgressDialogTask;
 import com.ulj.slicky.javafakesocial.db.FakeDBHandler;
 
-import java.io.IOException;
-
 /**
  * Created by SlickyPC on 21.5.2017
  */
@@ -26,7 +24,7 @@ class SignInTask extends ProgressDialogTask<Boolean> {
     }
 
     @Override
-    public Boolean backgroundTask() throws IOException {
+    public Boolean backgroundTask() {
         return FakeDBHandler.getInstance().signin(email, password);
     }
 
@@ -42,4 +40,5 @@ class SignInTask extends ProgressDialogTask<Boolean> {
     public void fail(Exception e) {
         fragment.failSignin("Could not Sign In!", e);
     }
+
 }

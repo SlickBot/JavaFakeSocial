@@ -61,6 +61,7 @@ public class FriendsActivity extends BackableActivity {
         friendsAdapter.setFriends(friends);
     }
 
+    @SuppressWarnings("SameParameterValue")
     void onFail(String text, Exception e) {
         displaySignOutDialog(text + (e != null ? "\n" + e.getLocalizedMessage() : ""));
         Log.wtf(TAG, text, e);
@@ -89,4 +90,5 @@ public class FriendsActivity extends BackableActivity {
             }
         });
     }
+
 }

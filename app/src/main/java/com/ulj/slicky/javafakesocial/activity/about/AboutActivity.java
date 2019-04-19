@@ -26,4 +26,5 @@ public class AboutActivity extends BackableActivity {
     public void onWatchOutClick(View view) {
         FakeUtils.startBrowseActivity(this, ApiServices.CONTENT_URL);
     }
+
 }

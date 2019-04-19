@@ -19,6 +19,7 @@ class CreatorValidator {
         textLayout.setError(null);
 
         String text = textLayout.getEditText().getText().toString();
+
         if (text.length() < 5) {
             textLayout.setError("Text is too short! (minimum is 5)");
             textLayout.requestFocus();

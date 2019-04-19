@@ -23,6 +23,7 @@ import static android.os.Build.VERSION.SDK_INT;
  * Created by SlickyPC on 30.5.2017
  */
 public class NotifyingService extends IntentService {
+
     private static final int NOTIFY_ID = 0xDEAD_BEEF;
     private static final String CHANNEL_ID = "0xDEAD_BEEF";
     private static final String CHANNEL_NAME = "NotifyingChannel";
@@ -46,7 +47,9 @@ public class NotifyingService extends IntentService {
             notificationChannel.setVibrationPattern(new long[]{500});
 
             NotificationManager manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-            manager.createNotificationChannel(notificationChannel);
+            if (manager != null) {
+                manager.createNotificationChannel(notificationChannel);
+            }
         }
     }
 
@@ -58,8 +61,7 @@ public class NotifyingService extends IntentService {
                         ? new Random().nextInt(60)
                         : prefs.getNotifyDuration();
                 TimeUnit.SECONDS.sleep(sleepInSeconds);
-            } catch (InterruptedException ignored) {
-            }
+            } catch (InterruptedException ignored) { }
             displayNotification();
         }
     }
@@ -70,8 +72,6 @@ public class NotifyingService extends IntentService {
         Intent callbackIntent = new Intent(getApplicationContext(), ContentActivity.class);
         PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(), 0, callbackIntent, 0);
 
-        NotificationManager manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-
         String appName = getString(R.string.app_name);
         Notification notification = new NotificationCompat.Builder(this, CHANNEL_ID)
                 .setSmallIcon(R.drawable.logo)
@@ -81,9 +81,16 @@ public class NotifyingService extends IntentService {
                 .setContentText("You should open " + appName + " again!")
                 .setAutoCancel(true)
                 .build();
-        manager.notify(NOTIFY_ID, notification);
+
+        NotificationManager manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        if (manager != null) {
+            manager.notify(NOTIFY_ID, notification);
+        }
 
         Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-        vibrator.vibrate(500);
+        if (vibrator != null) {
+            vibrator.vibrate(500);
+        }
     }
+
 }

@@ -35,4 +35,5 @@ class FriendsViewHolder extends RecyclerView.ViewHolder {
     TextView getFriendInfo() {
         return friendInfo;
     }
+
 }

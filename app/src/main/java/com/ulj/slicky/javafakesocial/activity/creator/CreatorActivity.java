@@ -15,6 +15,7 @@ import com.ulj.slicky.javafakesocial.activity.BackableActivity;
  * Created by SlickyPC on 30.5.2017
  */
 public class CreatorActivity extends BackableActivity {
+
     private static final String TAG = CreatorActivity.class.getCanonicalName();
 
     private EditText textField;
@@ -71,4 +72,5 @@ public class CreatorActivity extends BackableActivity {
         });
         Log.wtf(TAG, text, e);
     }
+
 }

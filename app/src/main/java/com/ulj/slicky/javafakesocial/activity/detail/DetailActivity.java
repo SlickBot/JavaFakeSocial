@@ -47,6 +47,10 @@ public class DetailActivity extends BackableActivity {
 
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
+        if (extras == null) {
+            return;
+        }
+
         content = extras.getParcelable(KEY_CONTENT);
 
         ImageView imageView = findViewById(R.id.detail_image);
@@ -123,6 +127,7 @@ public class DetailActivity extends BackableActivity {
         task.execute();
     }
 
+    @SuppressWarnings("SameParameterValue")
     void handleError(String text, Exception e) {
         displayDialog(text + (e != null ? "\n" + e.getLocalizedMessage() : ""));
         Log.wtf(TAG, text, e);
@@ -138,4 +143,5 @@ public class DetailActivity extends BackableActivity {
             }
         });
     }
+
 }

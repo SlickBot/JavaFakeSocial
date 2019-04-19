@@ -58,4 +58,5 @@ class SignInValidator {
 
         return true;
     }
+
 }

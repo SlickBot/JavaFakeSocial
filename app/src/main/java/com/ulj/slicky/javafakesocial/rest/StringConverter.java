@@ -39,7 +39,7 @@ public class StringConverter extends Converter.Factory {
         if (String.class == type)
             return new Converter<String, RequestBody>() {
                 @Override
-                public RequestBody convert(@NonNull String value) throws IOException {
+                public RequestBody convert(@NonNull String value) {
                     return RequestBody.create(MediaType.parse("text/plain"), value);
                 }
             };

@@ -20,6 +20,7 @@ import com.ulj.slicky.javafakesocial.activity.content.ContentActivity;
  * Created by SlickyPC on 18.5.2017
  */
 public class SignUpFragment extends Fragment {
+
     private static final String TAG = SignUpFragment.class.getCanonicalName();
 
     private EditText firstField;
@@ -65,14 +66,21 @@ public class SignUpFragment extends Fragment {
     }
 
     private void trySignup() {
-        SignUpValidator validator = new SignUpValidator(getView());
+        View view = getView();
+        if (view == null) {
+            return;
+        }
+
+        SignUpValidator validator = new SignUpValidator(view);
         if (validator.validate()) {
             if (validator.acceptedLegalNotice()) {
-                task = new SignUpTask(this,
+                task = new SignUpTask(
+                        this,
                         firstField.getText().toString(),
                         lastField.getText().toString(),
                         emailField.getText().toString(),
-                        firstPasswordField.getText().toString());
+                        firstPasswordField.getText().toString()
+                );
                 task.execute();
             } else {
                 displayDialog("You have to accept legal notice!");
@@ -85,7 +93,7 @@ public class SignUpFragment extends Fragment {
     void successSignup() {
         Intent intent = new Intent(getActivity(), ContentActivity.class);
         startActivity(intent);
-        getActivity().finish();
+        requireActivity().finish();
     }
 
     void failSignup(String text, Exception e) {
@@ -95,17 +103,18 @@ public class SignUpFragment extends Fragment {
     }
 
     private void shakeStage() {
-        FakeUtils.shakeContext(getContext(), firstField, lastField, emailField, firstPasswordField, secondPasswordField);
+        FakeUtils.shakeContext(requireContext(), firstField, lastField, emailField, firstPasswordField, secondPasswordField);
     }
 
     private void displayDialog(final String text) {
-        getActivity().runOnUiThread(new Runnable() {
+        requireActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                AlertDialog.Builder builder = new AlertDialog.Builder(getContext(), R.style.AppTheme_Dialog)
+                AlertDialog.Builder builder = new AlertDialog.Builder(requireContext(), R.style.AppTheme_Dialog)
                         .setMessage(text);
                 builder.create().show();
             }
         });
     }
+
 }
