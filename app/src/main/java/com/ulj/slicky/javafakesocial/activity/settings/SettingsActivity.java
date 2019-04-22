@@ -42,34 +42,25 @@ public class SettingsActivity extends BackableActivity {
         durationText = findViewById(R.id.settings_duration_text);
         randomSwitch = findViewById(R.id.settings_random_switch);
 
-        onOffSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                prefs.setNotifyOn(isChecked);
-                updateFields();
-                if (isChecked)
-                    startNotifyService();
-            }
+        onOffSwitch.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            prefs.setNotifyOn(isChecked);
+            updateFields();
+            if (isChecked)
+                startNotifyService();
         });
 
-        durationField.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                if (actionId == EditorInfo.IME_ACTION_DONE) {
-                    int duration = Integer.parseInt(durationField.getText().toString());
-                    prefs.setNotifyDuration(duration);
-                    updateFields();
-                }
-                return false;
-            }
-        });
-
-        randomSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                prefs.setNotifyRandom(isChecked);
+        durationField.setOnEditorActionListener((v, actionId, event) -> {
+            if (actionId == EditorInfo.IME_ACTION_DONE) {
+                int duration = Integer.parseInt(durationField.getText().toString());
+                prefs.setNotifyDuration(duration);
                 updateFields();
             }
+            return false;
+        });
+
+        randomSwitch.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            prefs.setNotifyRandom(isChecked);
+            updateFields();
         });
 
 

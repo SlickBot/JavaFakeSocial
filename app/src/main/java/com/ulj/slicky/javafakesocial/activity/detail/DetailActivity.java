@@ -100,26 +100,12 @@ public class DetailActivity extends BackableActivity {
     }
 
     private void displayConfirmationDialog() {
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                AlertDialog.Builder builder = new AlertDialog.Builder(DetailActivity.this, R.style.AppTheme_Dialog)
-                        .setMessage("Do you really want to remove this Content?")
-                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                startRemoveTask();
-                            }
-                        })
-                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                dialog.dismiss();
-                            }
-                        });
-                builder.create().show();
-            }
-        });
+        runOnUiThread(() -> new AlertDialog.Builder(DetailActivity.this, R.style.AppTheme_Dialog)
+                .setMessage("Do you really want to remove this Content?")
+                .setPositiveButton("Yes", (dialog, which) -> startRemoveTask())
+                .setNegativeButton("No", (dialog, which) -> dialog.dismiss())
+                .create()
+                .show());
     }
 
     private void startRemoveTask() {
@@ -134,14 +120,10 @@ public class DetailActivity extends BackableActivity {
     }
 
     private void displayDialog(final String text) {
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                AlertDialog.Builder builder = new AlertDialog.Builder(DetailActivity.this, R.style.AppTheme_Dialog)
-                        .setMessage(text);
-                builder.create().show();
-            }
-        });
+        runOnUiThread(() -> new AlertDialog.Builder(DetailActivity.this, R.style.AppTheme_Dialog)
+                .setMessage(text)
+                .create()
+                .show());
     }
 
 }

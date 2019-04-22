@@ -75,20 +75,12 @@ public class FriendsActivity extends BackableActivity {
     }
 
     private void displaySignOutDialog(final String text) {
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                AlertDialog.Builder builder = new AlertDialog.Builder(FriendsActivity.this, R.style.AppTheme_Dialog)
-                        .setMessage(text)
-                        .setCancelable(false)
-                        .setPositiveButton("Sign Out", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                logOut();
-                            }
-                        });
-                builder.create().show();
-            }
-        });
+        runOnUiThread(() -> new AlertDialog.Builder(FriendsActivity.this, R.style.AppTheme_Dialog)
+                .setMessage(text)
+                .setCancelable(false)
+                .setPositiveButton("Sign Out", (dialog, id) -> logOut())
+                .create()
+                .show());
     }
 
 }

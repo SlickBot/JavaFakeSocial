@@ -1,5 +1,5 @@
 # Fake Social Project
-Fake Social Project is part of my UNI thesis about comparing Android developement with Java versus Android developement with Kotlin.
+Fake Social Project is part of my UNI thesis about comparing Android development with Java versus Android development with Kotlin.
 
 ### Modules
 Project is separated into multiple modules.

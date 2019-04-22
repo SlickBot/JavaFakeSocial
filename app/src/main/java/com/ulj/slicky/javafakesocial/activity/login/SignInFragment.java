@@ -46,24 +46,16 @@ public class SignInFragment extends Fragment {
         emailField = view.findViewById(R.id.signin_email);
         passwordField = view.findViewById(R.id.signin_password);
 
-        passwordField.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                if (actionId == IME_ACTION_DONE) {
-                    trySignin();
-                    return true;
-                }
-                return false;
+        passwordField.setOnEditorActionListener((v, actionId, event) -> {
+            if (actionId == IME_ACTION_DONE) {
+                trySignin();
+                return true;
             }
+            return false;
         });
 
         Button signInButton = view.findViewById(R.id.signin_signin_button);
-        signInButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                trySignin();
-            }
-        });
+        signInButton.setOnClickListener(v -> trySignin());
 
         // TODO: This should be changed.
         emailField.setText("change@me.pls");
@@ -113,13 +105,10 @@ public class SignInFragment extends Fragment {
     }
 
     private void displayDialog(final String text) {
-        requireActivity().runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                AlertDialog.Builder builder = new AlertDialog.Builder(requireContext(), R.style.AppTheme_Dialog)
-                        .setMessage(text);
-                builder.create().show();
-            }
-        });
+        requireActivity().runOnUiThread(() -> new AlertDialog.Builder(requireContext(), R.style.AppTheme_Dialog)
+                .setMessage(text)
+                .create()
+                .show());
     }
+
 }

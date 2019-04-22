@@ -45,13 +45,10 @@ class ContentAdapter extends RecyclerView.Adapter<ContentViewHolder> {
         final View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.content_item, parent, false);
 
-        view.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int itemPosition = recycler.getChildLayoutPosition(view);
-                Content content = contents.get(itemPosition);
-                activity.openDetails(content);
-            }
+        view.setOnClickListener(v -> {
+            int itemPosition = recycler.getChildLayoutPosition(view);
+            Content content = contents.get(itemPosition);
+            activity.openDetails(content);
         });
 
         return new ContentViewHolder(view);

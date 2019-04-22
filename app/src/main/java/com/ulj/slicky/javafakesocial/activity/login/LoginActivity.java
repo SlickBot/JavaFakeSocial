@@ -50,4 +50,5 @@ public class LoginActivity extends AppCompatActivity {
     public void onLostDetailsClick(View view) {
         Toast.makeText(this, "Well, that sucks.", Toast.LENGTH_SHORT).show();
     }
+
 }

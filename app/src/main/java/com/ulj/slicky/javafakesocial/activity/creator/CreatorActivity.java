@@ -1,6 +1,5 @@
 package com.ulj.slicky.javafakesocial.activity.creator;
 
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
@@ -45,31 +44,19 @@ public class CreatorActivity extends BackableActivity {
     }
 
     void onCreatingSuccess() {
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                AlertDialog.Builder builder = new AlertDialog.Builder(CreatorActivity.this, R.style.AppTheme_Dialog)
-                        .setMessage("Successfully uploaded new Content!")
-                        .setCancelable(false)
-                        .setPositiveButton("Cool!", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                finish();
-                            }
-                        });
-                builder.create().show();
-            }
-        });
+        runOnUiThread(() -> new AlertDialog.Builder(CreatorActivity.this, R.style.AppTheme_Dialog)
+                .setMessage("Successfully uploaded new Content!")
+                .setCancelable(false)
+                .setPositiveButton("Cool!", (dialog, id) -> finish())
+                .create()
+                .show());
     }
 
     void onCreatingFail(final String text, final Exception e) {
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                AlertDialog.Builder builder = new AlertDialog.Builder(CreatorActivity.this, R.style.AppTheme_Dialog)
-                        .setMessage(text + (e != null ? "\n" + e.getLocalizedMessage() : ""));
-                builder.create().show();
-            }
-        });
+        runOnUiThread(() -> new AlertDialog.Builder(CreatorActivity.this, R.style.AppTheme_Dialog)
+                .setMessage(text + (e != null ? "\n" + e.getLocalizedMessage() : ""))
+                .create()
+                .show());
         Log.wtf(TAG, text, e);
     }
 

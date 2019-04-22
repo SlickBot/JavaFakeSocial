@@ -43,13 +43,10 @@ class FriendsAdapter extends RecyclerView.Adapter<FriendsViewHolder> {
         final View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.friends_item, parent, false);
 
-        view.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int itemPosition = recycler.getChildLayoutPosition(view);
-                Person friend = friends.get(itemPosition);
-                activity.openFriendProfile(friend);
-            }
+        view.setOnClickListener(v -> {
+            int itemPosition = recycler.getChildLayoutPosition(view);
+            Person friend = friends.get(itemPosition);
+            activity.openFriendProfile(friend);
         });
 
         return new FriendsViewHolder(view);

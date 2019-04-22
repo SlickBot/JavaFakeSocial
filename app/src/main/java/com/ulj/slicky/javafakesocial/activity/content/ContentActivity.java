@@ -176,20 +176,12 @@ public class ContentActivity
     }
 
     private void displaySignOutDialog(final String text) {
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                AlertDialog.Builder builder = new AlertDialog.Builder(ContentActivity.this, R.style.AppTheme_Dialog)
-                        .setMessage(text)
-                        .setCancelable(false)
-                        .setPositiveButton("Sign Out", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                signOut();
-                            }
-                        });
-                builder.create().show();
-            }
-        });
+        runOnUiThread(() -> new AlertDialog.Builder(ContentActivity.this, R.style.AppTheme_Dialog)
+                .setMessage(text)
+                .setCancelable(false)
+                .setPositiveButton("Sign Out", (dialog, id) -> signOut())
+                .create()
+                .show());
     }
 
 }

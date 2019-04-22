@@ -36,5 +36,6 @@ class CreatorTask extends ProgressDialogTask<Boolean> {
     public void fail(Exception e) {
         activityReference.get().onCreatingFail("Error occurred while uploading Content to Database!", e);
     }
+
 }
 

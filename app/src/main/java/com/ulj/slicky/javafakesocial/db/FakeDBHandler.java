@@ -17,8 +17,8 @@ import java.util.concurrent.TimeUnit;
  */
 public class FakeDBHandler implements DBHandler {
 
-    private static final FakeDBHandler instance = new FakeDBHandler();
     private static final Object lock = new Object();
+    private static FakeDBHandler instance;
 
     private Random random = new Random();
 
@@ -31,6 +31,9 @@ public class FakeDBHandler implements DBHandler {
     }
 
     public static FakeDBHandler getInstance() {
+        if (instance == null) {
+            instance = new FakeDBHandler();
+        }
         return instance;
     }
 
@@ -171,7 +174,7 @@ public class FakeDBHandler implements DBHandler {
             int timePassed = random.nextInt(1000 * 60 * 60 * 24);
 
             // Create new Content and add it to list.
-            Content content = new Content(random.nextLong(), randy, query, lastPostTime - timePassed);
+            Content content = new Content(random.nextLong(), randy, text, lastPostTime - timePassed);
             list.add(content);
         }
         return list;

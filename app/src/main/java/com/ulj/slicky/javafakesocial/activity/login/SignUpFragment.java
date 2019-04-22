@@ -48,12 +48,7 @@ public class SignUpFragment extends Fragment {
         secondPasswordField = view.findViewById(R.id.signup_second_password);
 
         Button signUpButton = view.findViewById(R.id.signup_signup_button);
-        signUpButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                trySignup();
-            }
-        });
+        signUpButton.setOnClickListener(v -> trySignup());
 
         return view;
     }
@@ -107,14 +102,10 @@ public class SignUpFragment extends Fragment {
     }
 
     private void displayDialog(final String text) {
-        requireActivity().runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                AlertDialog.Builder builder = new AlertDialog.Builder(requireContext(), R.style.AppTheme_Dialog)
-                        .setMessage(text);
-                builder.create().show();
-            }
-        });
+        requireActivity().runOnUiThread(() -> new AlertDialog.Builder(requireContext(), R.style.AppTheme_Dialog)
+                .setMessage(text)
+                .create()
+                .show());
     }
 
 }
