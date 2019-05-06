@@ -58,11 +58,20 @@ class FriendsAdapter extends RecyclerView.Adapter<FriendsViewHolder> {
 
         holder.getFriendName().setText(FakeUtils.getFullPersonName(friend));
         holder.getFriendInfo().setText(FakeUtils.getPersonInfo(friend));
-        Picasso.with(activity)
-                .load(friend.getPicture().getMedium())
-                .placeholder(R.drawable.ic_user)
-                .transform(new CropCircleTransformation())
-                .into(holder.getFriendImage());
+
+        if (FakeUtils.isAppiumTest()) {
+            Picasso.with(activity)
+                    .load(R.drawable.test_img)
+                    .placeholder(R.drawable.ic_user)
+                    .transform(new CropCircleTransformation())
+                    .into(holder.getFriendImage());
+        } else {
+            Picasso.with(activity)
+                    .load(friend.getPicture().getMedium())
+                    .placeholder(R.drawable.ic_user)
+                    .transform(new CropCircleTransformation())
+                    .into(holder.getFriendImage());
+        }
     }
 
     @Override

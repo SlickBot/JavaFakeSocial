@@ -1,8 +1,10 @@
 package com.ulj.slicky.javafakesocial.db;
 
+import com.ulj.slicky.javafakesocial.FakeUtils;
 import com.ulj.slicky.javafakesocial.model.content.Content;
 import com.ulj.slicky.javafakesocial.model.person.Person;
 import com.ulj.slicky.javafakesocial.model.person.PersonQuery;
+import com.ulj.slicky.javafakesocial.provider.Provider;
 import com.ulj.slicky.javafakesocial.rest.ApiServices;
 
 import java.io.IOException;
@@ -26,9 +28,6 @@ public class FakeDBHandler implements DBHandler {
     private List<Person> friends = null;
     private List<Content> contents = null;
     private boolean signedIn;
-
-    private FakeDBHandler() {
-    }
 
     public static FakeDBHandler getInstance() {
         if (instance == null) {
@@ -132,6 +131,18 @@ public class FakeDBHandler implements DBHandler {
     }
 
     private List<Person> findCandidates() throws IOException {
+        if (FakeUtils.isAppiumTest()) {
+            return findCandidatesProvider();
+        } else {
+            return findCandidatesApi();
+        }
+    }
+
+    private List<Person> findCandidatesProvider() {
+        return Provider.getInstance().getPersons(26);
+    }
+
+    private List<Person> findCandidatesApi() throws IOException {
         // Blocking api request for new random persons.
         PersonQuery query = ApiServices.personApi()
                 .getPerson(50, null, null, null, null)
@@ -153,14 +164,7 @@ public class FakeDBHandler implements DBHandler {
         ArrayList<Content> list = new ArrayList<>();
 
         for (int i = 0; i < 10; i++) {
-            // Blocking api request for new Content text.
-            String query = ApiServices.contentApi()
-                    .getContent("", "")
-                    .execute()
-                    .body();
-
-            if (query == null)
-                throw new IOException("Did not receive Content (is null)");
+            String text = findContent();
 
             // Pick random Content owner.
             Person randy = friends.get(random.nextInt(friends.size()));
@@ -180,6 +184,31 @@ public class FakeDBHandler implements DBHandler {
         return list;
     }
 
+    private String findContent() throws IOException {
+        if (FakeUtils.isAppiumTest()) {
+            return findContentProvider();
+        } else {
+            return findContentApi();
+        }
+    }
+
+    private String findContentApi() throws IOException {
+        // Blocking api request for new Content text.
+        String text = ApiServices.contentApi()
+                .getContent("", "")
+                .execute()
+                .body();
+
+        if (text == null)
+            throw new IOException("Did not receive Content (is null)");
+
+        return text;
+    }
+
+    private String findContentProvider() {
+        return Provider.getInstance().getContent();
+    }
+
     private List<Person> distinctByURL(List<Person> people) {
         ArrayList<Person> filtered = new ArrayList<>();
         HashSet<String> urls = new HashSet<>();
@@ -193,9 +222,11 @@ public class FakeDBHandler implements DBHandler {
     }
 
     private void simulateWork() {
-        try {
-            TimeUnit.SECONDS.sleep(1);
-        } catch (InterruptedException ignored) { }
+        if (!FakeUtils.isAppiumTest()) {
+            try {
+                TimeUnit.SECONDS.sleep(1);
+            } catch (InterruptedException ignored) { }
+        }
     }
 
 }

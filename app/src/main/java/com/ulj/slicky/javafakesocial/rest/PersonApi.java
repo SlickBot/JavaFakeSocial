@@ -19,13 +19,11 @@ public interface PersonApi {
     // seed=[string]
     // nat=[AU|BR|CA|CH|DE|DK|ES|FI|FR|GB|IE|IR|NL|NZ|TR|US|...]
     @GET("/api")
-    Call<PersonQuery> getPerson(@Query("results") int results,
-                                @Nullable
-                                @Query("gender") String gender,
-                                @Nullable
-                                @Query("seed") String seed,
-                                @Nullable
-                                @Query("nat") String nationality,
-                                @Nullable
-                                @Query("page") String page);
+    Call<PersonQuery> getPerson(
+            @Query("results") int results,
+            @Nullable @Query("gender") String gender,
+            @Nullable @Query("seed") String seed,
+            @Nullable @Query("nat") String nationality,
+            @Nullable @Query("page") String page
+    );
 }

@@ -5,12 +5,10 @@ buildscript {
         gradle_version = '3.4.0'
         gradle_versions_version = '0.21.0'
     }
-
     repositories {
         google()
         jcenter()
     }
-
     dependencies {
         classpath "com.android.tools.build:gradle:$gradle_version"
         classpath "com.github.ben-manes:gradle-versions-plugin:$gradle_versions_version"

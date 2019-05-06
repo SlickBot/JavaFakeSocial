@@ -1,6 +1,5 @@
 package com.ulj.slicky.javafakesocial.activity.content;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -120,7 +119,8 @@ public class ContentActivity
                 startActivity(intent);
                 break;
             case R.id.nav_share:
-                FakeUtils.startShareActivity(this,
+                FakeUtils.startShareActivity(
+                        this,
                         "Fakest Social Network!",
                         "This app is really FAKE!"
                 );

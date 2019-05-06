@@ -31,10 +31,10 @@ android {
 
     signingConfigs {
         appium {
-            storeFile file(TEST_STORE_FILE)
-            storePassword TEST_STORE_PASSWORD
-            keyAlias TEST_KEY_ALIAS
-            keyPassword TEST_KEY_PASSWORD
+            storeFile file(APPIUM_STORE_FILE)
+            storePassword APPIUM_STORE_PASSWORD
+            keyAlias APPIUM_KEY_ALIAS
+            keyPassword APPIUM_KEY_PASSWORD
         }
         release {
             storeFile file(RELEASE_STORE_FILE)
@@ -50,32 +50,35 @@ android {
             minifyEnabled false
             applicationIdSuffix '.debug'
             versionNameSuffix '-DEBUG'
+            buildConfigField 'String', 'BUILD_VERSION', "\"DEBUG\""
         }
         appium {
-            debuggable = true
+            debuggable = false
             minifyEnabled true
-            signingConfig signingConfigs.release
+            signingConfig signingConfigs.appium
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             applicationIdSuffix '.appium'
             versionNameSuffix '-APPIUM'
+            buildConfigField 'String', 'BUILD_VERSION', "\"APPIUM\""
         }
         release {
             debuggable = false
             minifyEnabled true
             signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            buildConfigField 'String', 'BUILD_VERSION', "\"RELEASE\""
         }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 
     packagingOptions{
         exclude 'META-INF/DEPENDENCIES'
         exclude 'META-INF/NOTICE'
         exclude 'META-INF/LICENSE'
-    }
-
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
     }
 }
 

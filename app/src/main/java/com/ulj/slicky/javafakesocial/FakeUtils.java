@@ -105,4 +105,12 @@ public class FakeUtils {
         activity.startActivity(browserIntent);
     }
 
+    public static boolean isAppiumTest() {
+        return BuildConfig.BUILD_VERSION.equals("APPIUM");
+    }
+
+    public static boolean isDebug() {
+        return BuildConfig.BUILD_VERSION.equals("DEBUG");
+    }
+
 }

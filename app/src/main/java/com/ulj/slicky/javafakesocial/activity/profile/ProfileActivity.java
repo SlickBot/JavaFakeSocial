@@ -85,10 +85,17 @@ public class ProfileActivity extends BackableActivity {
         String state = FakeUtils.capitalizeAll(person.getLocation().getState());
         String nat = FakeUtils.getCountryFromCode(person.getNat());
 
-        Picasso.with(this).load(imageUrl)
-                .placeholder(R.drawable.ic_user)
-                .transform(new CropCircleTransformation())
-                .into(imageView);
+        if (FakeUtils.isAppiumTest()) {
+            Picasso.with(this).load(R.drawable.test_img)
+                    .placeholder(R.drawable.ic_user)
+                    .transform(new CropCircleTransformation())
+                    .into(imageView);
+        } else {
+            Picasso.with(this).load(imageUrl)
+                    .placeholder(R.drawable.ic_user)
+                    .transform(new CropCircleTransformation())
+                    .into(imageView);
+        }
 
         nameField.setText(name);
         emailField.setText(email);

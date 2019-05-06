@@ -89,4 +89,5 @@ public class Content implements Parcelable {
         Content content = (Content) o;
         return id == content.id;
     }
+
 }

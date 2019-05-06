@@ -1,5 +1,6 @@
 package com.ulj.slicky.javafakesocial.activity.detail;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -40,6 +41,7 @@ public class DetailActivity extends BackableActivity {
         return intent;
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,10 +64,17 @@ public class DetailActivity extends BackableActivity {
         String name = FakeUtils.getFullPersonName(content.getOwner());
         CharSequence postedAtDate = FakeUtils.getFormattedWithTime(new Date(content.getPostedAt()));
 
-        Picasso.with(this).load(imageUrl)
-                .placeholder(R.drawable.ic_user)
-                .transform(new CropCircleTransformation())
-                .into(imageView);
+        if (FakeUtils.isAppiumTest()) {
+            Picasso.with(this).load(R.drawable.test_img)
+                    .placeholder(R.drawable.ic_user)
+                    .transform(new CropCircleTransformation())
+                    .into(imageView);
+        } else {
+            Picasso.with(this).load(imageUrl)
+                    .placeholder(R.drawable.ic_user)
+                    .transform(new CropCircleTransformation())
+                    .into(imageView);
+        }
 
         nameField.setText(name);
         postedAtField.setText("Posted at: " + postedAtDate);

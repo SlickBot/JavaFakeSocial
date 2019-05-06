@@ -64,11 +64,19 @@ class ContentAdapter extends RecyclerView.Adapter<ContentViewHolder> {
         holder.getPostedAt().setText(FakeUtils.getFormattedWithTime(postedAt));
         holder.getContent().setText(content.getText());
 
-        Picasso.with(activity)
-                .load(owner.getPicture().getMedium())
-                .placeholder(R.drawable.ic_user)
-                .transform(new CropCircleTransformation())
-                .into(holder.getOwnerImage());
+        if (FakeUtils.isAppiumTest()) {
+            Picasso.with(activity)
+                    .load(R.drawable.test_img)
+                    .placeholder(R.drawable.ic_user)
+                    .transform(new CropCircleTransformation())
+                    .into(holder.getOwnerImage());
+        } else {
+            Picasso.with(activity)
+                    .load(owner.getPicture().getMedium())
+                    .placeholder(R.drawable.ic_user)
+                    .transform(new CropCircleTransformation())
+                    .into(holder.getOwnerImage());
+        }
     }
 
     @Override
